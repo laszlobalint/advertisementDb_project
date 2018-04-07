@@ -47,18 +47,19 @@ public class DbManagement {
         for (Users hm : users.values()) {
             String userUn = hm.getUsername();
             String userPw = hm.getPassword();
-        if (userUn.equals(usernameLogin) && userPw.equals(passwordLogin)) {
-            activeUser.setId(hm.getId());
-            activeUser.setName(hm.getName());
-            activeUser.setUsername(hm.getUsername());
-            activeUser.setPassword(hm.getPassword());
-            activeUser.setDateOfBirth(hm.getDateOfBirth());
-            activeUser.setPhone(hm.getPhone());
-            activeUser.setEmail(hm.getEmail());
-            activeUser.setIsLoggedIn(true);
-        }
-            System.out.println("\n" + activeUser.toString());
-            System.out.println("\nDear " + activeUser.getName() + "! You are logged in now!");
+            if (userUn.equals(usernameLogin) && userPw.equals(passwordLogin) && !activeUser.isIsLoggedIn()) {
+                activeUser.setId(hm.getId());
+                activeUser.setName(hm.getName());
+                activeUser.setUsername(hm.getUsername());
+                activeUser.setPassword(hm.getPassword());
+                activeUser.setDateOfBirth(hm.getDateOfBirth());
+                activeUser.setPhone(hm.getPhone());
+                activeUser.setEmail(hm.getEmail());
+                activeUser.setIsLoggedIn(true);
+                System.out.println("\n" + activeUser.toString());
+                System.out.println("\nDear " + activeUser.getName() + "! You are logged in now!");
+                break;
+            }
         }
         if (!activeUser.isIsLoggedIn()) {
             System.err.println("Wrong username or password!");
@@ -234,7 +235,7 @@ public class DbManagement {
         bw = new BufferedWriter(new FileWriter("./adsUsers.txt"));
         String content;
         for (Users uP : users.values()) {
-            content = uP.getId() + ";" + uP.getName() + ";" + uP.getUsername() + ";" + uP.getPassword() + ";" + uP.getDateOfBirth() + ";" + uP.getPhone() + ";" + uP.getEmail() + "\n";
+            content = uP.getId() + ";" + uP.getName() + ";" + uP.getUsername() + ";" + Encryption.encrypt(uP.getPassword()) + ";" + uP.getDateOfBirth() + ";" + uP.getPhone() + ";" + uP.getEmail() + "\n";
             bw.write(content);
         }
         bw.flush();
