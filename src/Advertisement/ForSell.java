@@ -1,6 +1,7 @@
 package Advertisement;
 
-import java.util.Date;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class ForSell {
     static int id = 0;
@@ -10,9 +11,11 @@ public class ForSell {
     protected int wasBuilt;
     protected int price;
     protected boolean isMortgaged;
-    protected Date canBeMoved;
+    protected String canBeMoved;
 
-    public ForSell(int userId, String text, String county, int wasBuilt, int price, boolean isMortgaged, Date canBeMoved) {
+    Map<Integer, ForSell> sellAds = new TreeMap <>();
+
+    public ForSell(int userId, String text, String county, int wasBuilt, int price, boolean isMortgaged, String canBeMoved) {
         id++;
         this.userId = userId;
         this.text = text;

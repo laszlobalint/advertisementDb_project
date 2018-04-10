@@ -1,6 +1,7 @@
 package Advertisement;
 
-import java.util.Date;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class SearchRoommate {
     static int id = 0;
@@ -12,9 +13,11 @@ public class SearchRoommate {
     protected boolean isForStudents;
     protected int currentInmate;
     protected boolean isMan;
-    protected Date canBeMoved;
+    protected String canBeMoved;
 
-    public SearchRoommate(int userId, String text, String county, int cautionMonths, boolean isSmoking, boolean isForStudents, int currentInmate, boolean isMan, Date canBeMoved) {
+    Map<Integer, SearchRoommate> mateAds = new TreeMap <>();
+
+    public SearchRoommate(int userId, String text, String county, int cautionMonths, boolean isSmoking, boolean isForStudents, int currentInmate, boolean isMan, String canBeMoved) {
         id++;
         this.userId = userId;
         this.text = text;

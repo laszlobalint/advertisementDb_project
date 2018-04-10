@@ -3,9 +3,9 @@ package Advertisement;
 import java.util.Scanner;
 
 public class MainMenu {
-    boolean exit;
+    static boolean exit;
 
-    public void runMenu() throws Exception {
+    public static void runMenu() throws Exception {
         printHead();
         while (!exit) {
             printMenu();
@@ -14,7 +14,7 @@ public class MainMenu {
         }
     }
 
-    public void printMenu() {
+    public static void printMenu() {
         if (!Users.isIsLoggedIn()) {
             System.out.println("\nPlease, make your choice: ");
             System.out.println("1\t Registration");
@@ -34,7 +34,7 @@ public class MainMenu {
         }
     }
 
-    public void printHead() {
+    public static void printHead() {
         System.out.println("+---------------------------------------+");
         System.out.println("+           Welcome to our              +");
         System.out.println("+            advertisement              +");
@@ -42,7 +42,7 @@ public class MainMenu {
         System.out.println("+---------------------------------------+");
     }
 
-    public int getInput() {
+    public static int getInput() {
         Scanner kb = new Scanner(System.in);
         int choice = -1;
         if (!Users.isIsLoggedIn()) {
@@ -68,12 +68,13 @@ public class MainMenu {
         }
     }
 
-    public void performAction(int choice) throws Exception {
+    public static void performAction(int choice) throws Exception {
         Users user = new Users();
         if (!Users.isIsLoggedIn()) {
             switch (choice) {
                 case 0:
                     exit = true;
+                    DbManagement.writeToFileUsers();
                     System.out.println("Exiting the program.");
                     System.out.println("Good bye!");
                     break;
@@ -101,10 +102,10 @@ public class MainMenu {
                     DbManagement.loginUser();
                     break;
                 case 3:
-                    System.out.println("Add");
+                    AddAdsSubmenu.runMenu();
                     break;
                 case 4:
-                    System.out.println("Browse");
+                    BrowseAdsSubmenu.runMenu();
                     break;
                 case 5:
                     DbManagement.logoutUser();

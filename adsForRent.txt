@@ -1,0 +1,2 @@
+1;3;This is for rent.;Pest;3;500;200;true;true;2018-06-05
+2;3;I want to give you my flat for cheap.;Csongrad;2;600;200;false;true;2018-10-10
