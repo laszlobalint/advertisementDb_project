@@ -26,10 +26,11 @@ public class MainMenu {
             System.out.println("2\t Login user");
             System.out.println("3\t Add new advertisement");
             System.out.println("4\t Browse the advertisements");
-            System.out.println("5\t Logout user");
-            System.out.println("6\t Show user profile");
-            System.out.println("7\t Change user profile");
-            System.out.println("8\t Delete user profile");
+            System.out.println("5\t Edit the advertisements");
+            System.out.println("6\t Logout user");
+            System.out.println("7\t Show user profile");
+            System.out.println("8\t Change user profile");
+            System.out.println("9\t Delete user profile");
             System.out.println("0\t Exit program");
         }
     }
@@ -56,7 +57,7 @@ public class MainMenu {
             }
             return choice;
         } else {
-            while (choice < 0 || choice > 8) {
+            while (choice < 0 || choice > 9) {
                 try {
                     System.out.print("\nEnter your choice: ");
                     choice = Integer.parseInt(kb.nextLine());
@@ -108,15 +109,18 @@ public class MainMenu {
                     BrowseAdsSubmenu.runMenu();
                     break;
                 case 5:
-                    DbManagement.logoutUser();
+                    ForRent.editForRent();
                     break;
                 case 6:
-                    System.out.println(DbManagement.activeUser.toString());
+                    DbManagement.logoutUser();
                     break;
                 case 7:
-                    DbManagement.editUser();
+                    System.out.println(DbManagement.activeUser.toString());
                     break;
                 case 8:
+                    DbManagement.editUser();
+                    break;
+                case 9:
                     DbManagement.deleteUser();
                     break;
                 default:

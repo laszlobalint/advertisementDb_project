@@ -5,4 +5,4 @@
 5;Green;greenday;america69;1965-09-11;06-40-3456783;greenday@gmail.com
 6;Kornel;korika89;csakacsajok;1989-08-17;06-50-75437238;kori89@gmail.com
 7;Henry;henrybest;iamlegend001;1980-06-29;06-70-134565325;henryking@opera.com
-8;Szamanta Szoke;szokecica;ubuntu69;2000-01-05;06-30-52345352;samanthababy@citromail.hzu
+8;Szamanta Szoke;szokecica;ubuntu69;2000-01-05;06-30-52345352;samanthababy@citromail.hu

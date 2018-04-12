@@ -15,7 +15,7 @@ public class SearchRoommate {
     protected boolean isMan;
     protected String canBeMoved;
 
-    Map<Integer, SearchRoommate> mateAds = new TreeMap <>();
+    static Map<Integer, SearchRoommate> mateAds = new TreeMap <>();
 
     public SearchRoommate(int userId, String text, String county, int cautionMonths, boolean isSmoking, boolean isForStudents, int currentInmate, boolean isMan, String canBeMoved) {
         id++;
@@ -32,8 +32,8 @@ public class SearchRoommate {
 
     @Override
     public String toString() {
-        return "Searching for roommate: " + '\n' +
-                "Text of advertisement: " + text + '\n' +
+        return "\nSearching for roommate: " + '\n' +
+                "\nText of advertisement: " + text + '\n' +
                 "County: " + county + '\n' +
                 "Months of caution: " + cautionMonths + '\n' +
                 "Smoking allowed: " + (isSmoking ? " yes" : " no") + '\n' +

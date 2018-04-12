@@ -3,7 +3,6 @@ package Advertisement;
 import java.util.Map;
 import java.util.Scanner;
 
-import static Advertisement.DbManagement.users;
 import static Advertisement.ForRent.rentAds;
 
 public class BrowseAdsSubmenu extends MainMenu {
@@ -55,15 +54,59 @@ public class BrowseAdsSubmenu extends MainMenu {
                 int id = -1;
                 while (id < 0 || id > DbManagement.users.lastKey()) {
                     try {
-                        System.out.print("\nEnter your choice: ");
+                        System.out.print("\nGive a user ID: ");
                         id = Integer.parseInt(kb.nextLine());
                     } catch (NumberFormatException e) {
                         System.out.print("Invalid selection. Give an existing user ID. ");
                     }
-                    // HERE COMES THE SEARCH IN THE MAPS BY USER ID!!!
                 }
+                    for (ForRent rent : rentAds.values()) {
+                        if (rent.getUserId() == id) {
+                            System.out.println(rent.toString() + "\n");
+                        }
+                    }
+                    /*
+                    for (ForSell sell : sellAds.values()) {
+                        if (sell.getUserId == id) {
+                            System.out.println(sell.toString() + "\n");
+                        }
+                    }
+                    for (SearchRoommate mate : mateAds.values()) {
+                        if (mate.getUserId == id) {
+                            System.out.println(mate.toString() + "\n");
+                        }
+                    }
+                    */
                 break;
             case 5:
+                System.out.println("\nShow advertisements by advertisement ID:\n");
+                Scanner sb = new Scanner(System.in);
+                id = -1;
+                while (id < 0 || id > 1000) {
+                    try {
+                        System.out.print("\nGive an advertisement ID: ");
+                        id = Integer.parseInt(sb.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.print("Invalid selection. Give an existing user ID. ");
+                    }
+                }
+                for (ForRent rent : rentAds.values()) {
+                    if (rent.getId() == id) {
+                        System.out.println(rent.toString() + "\n");
+                    }
+                }
+                    /*
+                    for (ForSell sell : sellAds.values()) {
+                        if (sell.getId == id) {
+                            System.out.println(sell.toString() + "\n");
+                        }
+                    }
+                    for (SearchRoommate mate : mateAds.values()) {
+                        if (mate.getId == id) {
+                            System.out.println(mate.toString() + "\n");
+                        }
+                    }
+                    */
                 break;
             case 6:
                 exit = true;

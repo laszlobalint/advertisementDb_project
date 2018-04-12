@@ -1,2 +1,3 @@
-1;3;This is for rent.;Pest;3;500;200;true;true;2018-06-05
-2;3;I want to give you my flat for cheap.;Csongrad;2;600;200;false;true;2018-10-10
+1;3;Nice view from the balcony, near city center.;Pest;3;500;200;true;true;2018-06-05
+2;3;Perfect choice for students, cheap price.;Csongrad;2;400;200;false;true;2018-10-10
+3;1;Pets are allowed, in a newly built house.;Bekes;1;600;300;false;false;2018-07-20

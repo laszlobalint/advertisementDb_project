@@ -65,14 +65,14 @@ public class ForRent {
         System.out.println("Advertisement information: ");
         while (!input.hasNext("\\w+")) {
             System.out.println("Give a text description for your advertisement!");
-            input.next();
+            input.nextLine();
         }
         String text = input.nextLine();
 
         System.out.println("County of the estate: ");
         while (!input.hasNext("\\w+")) {
             System.out.println("Give the county of the estate!");
-            input.next();
+            input.nextLine();
         }
         String county = input.nextLine();
 
@@ -134,76 +134,114 @@ public class ForRent {
     public static boolean editForRent() {
         Scanner input = new Scanner(System.in);
         System.out.println("\tYou can change your advertisement here");
-
-        System.out.println("Advertisement information: ");
-        while (!input.hasNext("\\w+")) {
-            System.out.println("Give a text description for your advertisement!");
-            input.next();
-        }
-        String text = input.next();
-
-        System.out.println("County of the estate: ");
-        while (!input.hasNext("\\w+")) {
-            System.out.println("Give the county of the estate!");
-            input.next();
-        }
-        String county = input.next();
-
-        System.out.println("How many deposits do you require: ");
-        while (!input.hasNext("\\d")) {
-            System.out.println("Give a regular number!");
-            input.next();
-        }
-        int cautionMonths = Integer.parseInt(input.next());
-
-        System.out.println("Monthly rent in dollars: ");
+        System.out.println("Give an ID of your advertisement: ");
         while (!input.hasNext("\\d+")) {
-            System.out.println("Give a regular number!");
-            input.next();
+            input.nextLine();
         }
-        int monthlyRent = Integer.parseInt(input.next());
+        int idEdit = Integer.parseInt(input.next());
+        for (ForRent rent : rentAds.values()) {
+            if ((rent.getUserId() == DbManagement.activeUser.getId()) && rent.getId() == idEdit) {
+                System.out.println(rent.toString() + "\n");
 
-        System.out.println("Current expenses (approximately) per month: ");
-        while (!input.hasNext("\\d+")) {
-            System.out.println("Give a regular number!");
-            input.next();
-        }
-        int currentExpenses = Integer.parseInt(input.next());
+            System.out.println("Advertisement information:");
 
-        System.out.println("Is smoking allowed? (true or false) ");
-        while (!input.hasNext("true|false")) {
-            System.out.println("Choose 'true' or 'false'!");
-            input.next();
-        }
-        boolean isSmoking = Boolean.parseBoolean(input.next());
-
-        System.out.println("Is it available for students? (true or false) ");
-        while (!input.hasNext("true|false")) {
-            System.out.println("Choose 'true' or 'false'!");
-            input.next();
-        }
-        boolean isStudent = Boolean.parseBoolean(input.next());
-
-        System.out.println("Enter the earliest date of moving in (yyyy-MM-dd): ");
-        while (!input.hasNext("\\d{4}.[01]\\d.[0-3]\\d")) {
-            System.out.println("Irregular date format. Try again!");
-            input.next();
-        }
-        String moveIn = input.next();
-
-        int lastId = 0;
-        for (Integer id : rentAds.keySet()) {
-            if (id > lastId) {
-                lastId = id;
+            while (!input.hasNext("\\w+")) {
+                System.out.println("Give a text description for your advertisement!");
+                input.nextLine();
             }
-        }
+            String text = input.nextLine();
 
-        ForRent newRent = new ForRent(lastId + 1, DbManagement.activeUser.getId(), text, county, cautionMonths, monthlyRent, currentExpenses, isSmoking, isStudent, moveIn);
-        rentAds.put(newRent.getId(), newRent);
-        System.out.println("You picked up an advertisement successfully!" + '\n' + newRent.toString());
+            System.out.println("County of the estate: ");
+            while (!input.hasNext("\\w+")) {
+                System.out.println("Give the county of the estate!");
+                input.nextLine();
+            }
+            String county = input.nextLine();
+
+            System.out.println("How many deposits do you require: ");
+            while (!input.hasNext("\\d")) {
+                System.out.println("Give a regular number!");
+                input.nextLine();
+            }
+            int cautionMonths = Integer.parseInt(input.next());
+
+            System.out.println("Monthly rent in dollars: ");
+            while (!input.hasNext("\\d+")) {
+                System.out.println("Give a regular number!");
+                input.nextLine();
+            }
+            int monthlyRent = Integer.parseInt(input.nextLine());
+
+            System.out.println("Current expenses (approximately) per month: ");
+            while (!input.hasNext("\\d+")) {
+                System.out.println("Give a regular number!");
+                input.nextLine();
+            }
+            int currentExpenses = Integer.parseInt(input.nextLine());
+
+            System.out.println("Is smoking allowed? (true or false) ");
+            while (!input.hasNext("true|false")) {
+                System.out.println("Choose 'true' or 'false'!");
+                input.nextLine();
+            }
+            boolean isSmoking = Boolean.parseBoolean(input.nextLine());
+
+            System.out.println("Is it available for students? (true or false) ");
+            while (!input.hasNext("true|false")) {
+                System.out.println("Choose 'true' or 'false'!");
+                input.nextLine();
+            }
+            boolean isStudent = Boolean.parseBoolean(input.nextLine());
+
+            System.out.println("Enter the earliest date of moving in (yyyy-MM-dd): ");
+            while (!input.hasNext("\\d{4}.[01]\\d.[0-3]\\d")) {
+                System.out.println("Irregular date format. Try again!");
+                input.next();
+            }
+            String moveIn = input.next();
+
+            int lastId = 0;
+            for (Integer id : rentAds.keySet()) {
+                if (id > lastId) {
+                    lastId = id;
+                }
+            }
+            ForRent editRent = new ForRent(idEdit, DbManagement.activeUser.getId(), text, county, cautionMonths, monthlyRent, currentExpenses, isSmoking, isStudent, moveIn);
+            rentAds.replace(idEdit, editRent);
+            System.out.println("You changed an advertisement successfully!" + '\n' + editRent.toString());
+            }
+        } return true;
+    }
+/*
+    public static boolean deleteForRent() {
+        BufferedReader reader = null;
+        String line;
+        System.out.println("\nYou can change your profile here: ");
+        Scanner in = new Scanner(System.in);
+        System.out.println("\nDear " + details[1] + "!");
+        System.out.println("Do you really want to delete your profile? (Y / N): ");
+        String answer;
+        answer = in.nextLine().trim().toLowerCase();
+        switch (answer) {
+            case "y":
+                try {
+                    line = reader.readLine();
+                    users.remove(activeUser.getId());
+                    System.out.println("\nYou deleted this profile!");
+                    Users.setIsLoggedIn(false);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "n":
+                return false;
+            default:
+                System.out.println("Please, answer 'Y' or 'N'. ");
+                break;
+        }
         return true;
     }
-
+*/
     public static Map <Integer, ForRent> getRentAds() {
         return rentAds;
     }
@@ -254,8 +292,8 @@ public class ForRent {
 
     @Override
     public String toString() {
-        return "Flat/House for rent: " + '\n' +
-                "Text of advertisement: " + text + '\n' +
+        return "\nFlat/House for rent: " + '\n' +
+                "\nText of advertisement: " + text + '\n' +
                 "County: " + county + '\n' +
                 "Months of caution: " + cautionMonths + '\n' +
                 "Monthly rent ($/M): " + monthlyRent + '\n' +
