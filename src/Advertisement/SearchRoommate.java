@@ -15,7 +15,7 @@ public class SearchRoommate {
     protected boolean isMan;
     protected String canBeMoved;
 
-    static Map<Integer, SearchRoommate> mateAds = new TreeMap <>();
+    static Map <Integer, SearchRoommate> mateAds = new TreeMap <>();
 
     public SearchRoommate(int userId, String text, String county, int cautionMonths, boolean isSmoking, boolean isForStudents, int currentInmate, boolean isMan, String canBeMoved) {
         id++;

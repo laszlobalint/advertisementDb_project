@@ -6,3 +6,5 @@
 6;Kornel;korika89;csakacsajok;1989-08-17;06-50-75437238;kori89@gmail.com
 7;Henry;henrybest;iamlegend001;1980-06-29;06-70-134565325;henryking@opera.com
 8;Szamanta Szoke;szokecica;ubuntu69;2000-01-05;06-30-52345352;samanthababy@citromail.hu
+9;Taste Sample;sampleuser;trythisprogramme;1981-08-20;06-20-31226798;samplesimple@google.com
+10;Test Peter;test135;test135;2018-01-01;06-70-6930143143;firsttest@gmail.com

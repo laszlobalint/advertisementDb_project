@@ -40,10 +40,10 @@ public class BrowseAdsSubmenu extends MainMenu {
                 break;
             case 1:
                 System.out.println("\nAll for rent ads in the database:\n");
-                for (Map.Entry<Integer, ForRent> entry : rentAds.entrySet()) {
+                for (Map.Entry <Integer, ForRent> entry : rentAds.entrySet()) {
                     System.out.println(entry.getValue().toString());
                 }
-                    break;
+                break;
             case 2:
                 break;
             case 3:
@@ -60,11 +60,11 @@ public class BrowseAdsSubmenu extends MainMenu {
                         System.out.print("Invalid selection. Give an existing user ID. ");
                     }
                 }
-                    for (ForRent rent : rentAds.values()) {
-                        if (rent.getUserId() == id) {
-                            System.out.println(rent.toString() + "\n");
-                        }
+                for (ForRent rent : rentAds.values()) {
+                    if (rent.getUserId() == id) {
+                        System.out.println(rent.toString() + "\n");
                     }
+                }
                     /*
                     for (ForSell sell : sellAds.values()) {
                         if (sell.getUserId == id) {

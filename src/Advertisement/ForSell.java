@@ -13,7 +13,7 @@ public class ForSell {
     protected boolean isMortgaged;
     protected String canBeMoved;
 
-    static Map<Integer, ForSell> sellAds = new TreeMap <>();
+    static Map <Integer, ForSell> sellAds = new TreeMap <>();
 
     public ForSell(int userId, String text, String county, int wasBuilt, int price, boolean isMortgaged, String canBeMoved) {
         id++;
