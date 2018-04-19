@@ -8,6 +8,7 @@ public class Main {
         MainMenu mainMenu = new MainMenu();
         AddAdsSubmenu adsSubmenu = new AddAdsSubmenu();
         BrowseAdsSubmenu browseAdsSubmenu = new BrowseAdsSubmenu();
+        EditAdsSubmenu editAdsSubmenu = new EditAdsSubmenu();
         DbManagement.loadUsers();
         ForRent.loadForRent();
         ForSale.loadForSale();

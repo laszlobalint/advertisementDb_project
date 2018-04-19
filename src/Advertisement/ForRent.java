@@ -128,13 +128,13 @@ public class ForRent {
 
         ForRent newRent = new ForRent(lastId + 1, activeUser.getId(), text, county, cautionMonths, monthlyRent, currentExpenses, isSmoking, isStudent, moveIn);
         rentAds.put(newRent.getId(), newRent);
-        System.out.println("You picked up an advertisement successfully!" + '\n' + newRent.toString());
+        System.out.println("You picked up an advertisement successfully! " + '\n' + newRent.toString());
         return true;
     }
 
     public static boolean editForRent() {
         Scanner input = new Scanner(System.in);
-        System.out.println("\tYou can change your advertisement here");
+        System.out.println("\tYou can change your advertisement here ");
         System.out.println("Give an ID of your advertisement: ");
         while (!input.hasNext("\\d+")) {
             input.nextLine();
@@ -144,7 +144,7 @@ public class ForRent {
             if ((rent.getUserId() == activeUser.getId()) && rent.getId() == idEdit) {
                 System.out.println(rent.toString() + "\n");
 
-                System.out.println("Advertisement information:");
+                System.out.println("Advertisement information: ");
 
                 while (!input.hasNext("\\w+")) {
                     System.out.println("Give a text description for your advertisement!");
@@ -209,7 +209,7 @@ public class ForRent {
                 }
                 ForRent editRent = new ForRent(idEdit, activeUser.getId(), text, county, cautionMonths, monthlyRent, currentExpenses, isSmoking, isStudent, moveIn);
                 rentAds.replace(idEdit, editRent);
-                System.out.println("You changed an advertisement successfully!" + '\n' + editRent.toString());
+                System.out.println("You changed an advertisement successfully! " + '\n' + editRent.toString());
             }
         }
         return true;

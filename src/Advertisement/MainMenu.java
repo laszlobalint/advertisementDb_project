@@ -17,28 +17,28 @@ public class MainMenu {
     public static void printMenu() {
         if (!Users.isIsLoggedIn()) {
             System.out.println("\nPlease, make your choice: ");
-            System.out.println("1\t Registration");
-            System.out.println("2\t Login user");
-            System.out.println("0\t Exit program");
+            System.out.println("1\t Registration ");
+            System.out.println("2\t Login user ");
+            System.out.println("0\t Exit program ");
         } else {
             System.out.println("\nPlease, make your choice: ");
-            System.out.println("1\t Registration");
-            System.out.println("2\t Login user");
-            System.out.println("3\t Add new advertisement");
-            System.out.println("4\t Browse advertisements");
-            System.out.println("5\t Edit an advertisement");
-            System.out.println("6\t Delete an advertisements");
-            System.out.println("7\t Logout user");
-            System.out.println("8\t Show user profile");
-            System.out.println("9\t Change user profile");
-            System.out.println("10\t Delete user profile");
-            System.out.println("0\t Exit program");
+            System.out.println("1\t Registration ");
+            System.out.println("2\t Login user ");
+            System.out.println("3\t Add new advertisement ");
+            System.out.println("4\t Browse advertisements ");
+            System.out.println("5\t Edit an advertisement ");
+            System.out.println("6\t Delete an advertisements ");
+            System.out.println("7\t Logout user ");
+            System.out.println("8\t Show user profile ");
+            System.out.println("9\t Change user profile ");
+            System.out.println("10\t Delete user profile ");
+            System.out.println("0\t Exit program ");
         }
     }
 
     public static void printHead() {
         System.out.println("+---------------------------------------+");
-        System.out.println("+           Welcome to our              +");
+        System.out.println("+            Welcome to my              +");
         System.out.println("+            advertisement              +");
         System.out.println("+            info database              +");
         System.out.println("+---------------------------------------+");
@@ -77,8 +77,8 @@ public class MainMenu {
                 case 0:
                     exit = true;
                     DbManagement.writeToFile();
-                    System.out.println("Exiting the program.");
-                    System.out.println("Good bye!");
+                    System.out.println("Exiting the program. ");
+                    System.out.println("Good bye! ");
                     break;
                 case 1:
                     DbManagement.addUser();
@@ -87,15 +87,15 @@ public class MainMenu {
                     DbManagement.loginUser();
                     break;
                 default:
-                    System.out.println("An unknown error has occurred.");
+                    System.out.println("An unknown error has occurred. ");
             }
         } else {
             switch (choice) {
                 case 0:
                     exit = true;
                     DbManagement.writeToFile();
-                    System.out.println("Exiting the program.");
-                    System.out.println("Good bye!");
+                    System.out.println("Exiting the program. ");
+                    System.out.println("Good bye! ");
                     break;
                 case 1:
                     DbManagement.addUser();
@@ -128,7 +128,7 @@ public class MainMenu {
                     DbManagement.deleteUser();
                     break;
                 default:
-                    System.out.println("An unknown error has occurred.");
+                    System.out.println("An unknown error has occurred. ");
             }
         }
     }

@@ -30,7 +30,7 @@ public class Serializer {
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
-            System.out.println("Map class not found.");
+            System.out.println("Map class not found. ");
             c.printStackTrace();
         }
         return map;

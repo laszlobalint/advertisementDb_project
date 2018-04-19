@@ -63,7 +63,7 @@ public class SearchRoommate {
 
     public static boolean addSearchMate() {
         Scanner input = new Scanner(System.in);
-        System.out.println("\tAdd new advertisement (search for inmate)");
+        System.out.println("\tAdd new advertisement (search for inmate) ");
 
         System.out.println("Advertisement information: ");
         while (!input.hasNext("\\w+")) {
@@ -137,13 +137,13 @@ public class SearchRoommate {
 
         SearchRoommate newSearch = new SearchRoommate(lastId + 1, activeUser.getId(), text, county, cautionMonths, monthlyRent, isSmoking, isStudent, currentInMate, isMan, moveIn);
         searchAds.put(activeUser.getId(), newSearch);
-        System.out.println("You picked up an advertisement successfully!" + '\n' + newSearch.toString());
+        System.out.println("You picked up an advertisement successfully! " + '\n' + newSearch.toString());
         return true;
     }
 
     public static boolean editSearchMate() {
         Scanner input = new Scanner(System.in);
-        System.out.println("\tYou can change your advertisement here");
+        System.out.println("\tYou can change your advertisement here ");
         System.out.println("Give an ID of your advertisement: ");
         while (!input.hasNext("\\d+")) {
             input.nextLine();

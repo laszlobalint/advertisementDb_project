@@ -12,13 +12,13 @@ public class BrowseAdsSubmenu extends MainMenu {
 
     public static void runMenu() throws Exception {
         System.out.println("\nHow do you want to search? ");
-        System.out.println("1\t Show all for rent ads");
-        System.out.println("2\t Show all for sale ads");
-        System.out.println("3\t Show all inmate search ads");
-        System.out.println("4\t Search by user ID");
-        System.out.println("5\t Search by advertisement ID");
-        System.out.println("6\t Back to main menu");
-        System.out.println("0\t Exit program");
+        System.out.println("1\t Show all for rent ads ");
+        System.out.println("2\t Show all for sale ads ");
+        System.out.println("3\t Show all inmate search ads ");
+        System.out.println("4\t Search by user ID ");
+        System.out.println("5\t Search by advertisement ID ");
+        System.out.println("6\t Back to main menu ");
+        System.out.println("0\t Exit program ");
         Scanner kb = new Scanner(System.in);
         int choice = -1;
         while (choice < 0 || choice > 6) {
@@ -37,29 +37,29 @@ public class BrowseAdsSubmenu extends MainMenu {
             case 0:
                 exit = true;
                 DbManagement.writeToFile();
-                System.out.println("Exiting the program.");
-                System.out.println("Good bye!");
+                System.out.println("Exiting the program. ");
+                System.out.println("Good bye! ");
                 break;
             case 1:
-                System.out.println("\nAll for rent ads in the database:\n");
+                System.out.println("\nAll for rent ads in the database: \n");
                 for (Map.Entry <Integer, ForRent> entry : rentAds.entrySet()) {
                     System.out.println(entry.getValue().toString());
                 }
                 break;
             case 2:
-                System.out.println("\nAll for sale ads in the database:\n");
+                System.out.println("\nAll for sale ads in the database: \n");
                 for (Map.Entry <Integer, ForSale> entry : saleAds.entrySet()) {
                     System.out.println(entry.getValue().toString());
                 }
                 break;
             case 3:
-                System.out.println("\nAll search for inmates ads in the database:\n");
+                System.out.println("\nAll search for inmates ads in the database: \n");
                 for (Map.Entry <Integer, SearchRoommate> entry : searchAds.entrySet()) {
                     System.out.println(entry.getValue().toString());
                 }
                 break;
             case 4:
-                System.out.println("\nShow advertisements by user ID:\n");
+                System.out.println("\nShow advertisements by user ID: \n");
                 Scanner kb = new Scanner(System.in);
                 int id = -1;
                 while (id < 0 || id > DbManagement.users.lastKey()) {
@@ -88,7 +88,7 @@ public class BrowseAdsSubmenu extends MainMenu {
                 }
                 break;
             case 5:
-                System.out.println("\nShow advertisements by advertisement ID:\n");
+                System.out.println("\nShow advertisements by advertisement ID: \n");
                 Scanner sb = new Scanner(System.in);
                 id = -1;
                 while (id < 0 || id > 1000) {
@@ -121,7 +121,7 @@ public class BrowseAdsSubmenu extends MainMenu {
                 exit = true;
                 break;
             default:
-                System.out.println("An unknown error has occurred.");
+                System.out.println("An unknown error has occurred. ");
         }
     }
 }

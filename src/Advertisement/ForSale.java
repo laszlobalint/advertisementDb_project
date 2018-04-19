@@ -57,7 +57,7 @@ public class ForSale {
 
     public static boolean addForSale() {
         Scanner input = new Scanner(System.in);
-        System.out.println("\tAdd new advertisement (for sale)");
+        System.out.println("\tAdd new advertisement (for sale) ");
 
         System.out.println("Advertisement information: ");
         while (!input.hasNext("\\w+")) {
@@ -110,13 +110,13 @@ public class ForSale {
 
         ForSale newSale = new ForSale(lastId + 1, activeUser.getId(), text, county, wasBuilt, price, isMortgaged, moveIn);
         saleAds.put(newSale.getId(), newSale);
-        System.out.println("You picked up an advertisement successfully!" + '\n' + newSale.toString());
+        System.out.println("You picked up an advertisement successfully! " + '\n' + newSale.toString());
         return true;
     }
 
     public static boolean editForSale() {
         Scanner input = new Scanner(System.in);
-        System.out.println("\tYou can change your advertisement here");
+        System.out.println("\tYou can change your advertisement here ");
         System.out.println("Give an ID of your advertisement: ");
         while (!input.hasNext("\\d+")) {
             input.nextLine();
@@ -126,7 +126,7 @@ public class ForSale {
             if ((sale.getUserId() == activeUser.getId()) && sale.getId() == idEdit) {
                 System.out.println(sale.toString() + "\n");
 
-                System.out.println("Advertisement information:");
+                System.out.println("Advertisement information: ");
 
                 while (!input.hasNext("\\w+")) {
                     System.out.println("Give a text description for your advertisement!");
@@ -177,7 +177,7 @@ public class ForSale {
                 }
                 ForSale editSale = new ForSale(idEdit, activeUser.getId(), text, county, wasBuilt, price, isMortgaged, moveIn);
                 saleAds.replace(idEdit, editSale);
-                System.out.println("You changed an advertisement successfully!" + '\n' + editSale.toString());
+                System.out.println("You changed an advertisement successfully! " + '\n' + editSale.toString());
             }
         }
         return true;

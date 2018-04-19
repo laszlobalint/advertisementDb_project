@@ -7,11 +7,11 @@ public class DeleteAdsSubmenu extends MainMenu {
 
     public static void runMenu() throws Exception {
         System.out.println("\nWhat kind of advertisement do you want to delete? ");
-        System.out.println("1\t My for rent advertisements");
-        System.out.println("2\t My for sell advertisements");
-        System.out.println("3\t My search for inmates advertisements");
-        System.out.println("4\t Back to main menu");
-        System.out.println("0\t Exit program");
+        System.out.println("1\t My for rent advertisements ");
+        System.out.println("2\t My for sell advertisements ");
+        System.out.println("3\t My search for inmates advertisements ");
+        System.out.println("4\t Back to main menu ");
+        System.out.println("0\t Exit program ");
         Scanner kb = new Scanner(System.in);
         int choice = -1;
         while (choice < 0 || choice > 4) {
@@ -30,8 +30,8 @@ public class DeleteAdsSubmenu extends MainMenu {
             case 0:
                 exit = true;
                 DbManagement.writeToFile();
-                System.out.println("Exiting the program.");
-                System.out.println("Good bye!");
+                System.out.println("Exiting the program. ");
+                System.out.println("Good bye! ");
                 break;
             case 1:
                 ForRent.deleteForRent();
@@ -46,7 +46,7 @@ public class DeleteAdsSubmenu extends MainMenu {
                 exit = true;
                 break;
             default:
-                System.out.println("An unknown error has occurred.");
+                System.out.println("An unknown error has occurred. ");
         }
     }
 }

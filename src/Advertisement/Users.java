@@ -22,72 +22,39 @@ public class Users {
         this.details = details;
     }
 
-    public Users() {
-    }
+    public Users() {}
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) { this.id = id; }
 
-    public static boolean isIsLoggedIn() {
-        return isLoggedIn;
-    }
+    public static boolean isIsLoggedIn() { return isLoggedIn; }
 
-    public static void setIsLoggedIn(boolean isLoggedIn) {
-        Users.isLoggedIn = isLoggedIn;
-    }
+    public static void setIsLoggedIn(boolean isLoggedIn) { Users.isLoggedIn = isLoggedIn; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername() { return username; }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public void setUsername(String username) { this.username = username; }
 
-    public String getPassword() {
-        return password;
-    }
+    public String getPassword() { return password; }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = password; }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
+    public String getDateOfBirth() { return dateOfBirth; }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+    public void setDateOfBirth(String dateOfBirth) { this.dateOfBirth = dateOfBirth; }
 
-    public String getPhone() {
-        return phone;
-    }
+    public String getPhone() { return phone; }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    public void setPhone(String phone) { this.phone = phone; }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getEmail() { return email; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setEmail(String email) { this.email = email; }
 
     @Override
     public String toString() {

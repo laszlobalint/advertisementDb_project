@@ -36,7 +36,7 @@ public class DbManagement {
     }
 
     public static boolean loginUser() {
-        System.out.println("\n Login menu");
+        System.out.println("\n Login menu ");
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your username: ");
         String usernameLogin = input.next();
@@ -55,18 +55,18 @@ public class DbManagement {
                 activeUser.setEmail(hm.getEmail());
                 activeUser.setIsLoggedIn(true);
                 System.out.println("\n" + activeUser.toString());
-                System.out.println("\nDear " + activeUser.getName() + "! You are logged in now!");
+                System.out.println("\nDear " + activeUser.getName() + "! You are logged in now! ");
                 break;
             }
         }
         if (!activeUser.isIsLoggedIn()) {
-            System.err.println("Wrong username or password!");
+            System.err.println("Wrong username or password! ");
         }
         return true;
     }
 
     public static boolean logoutUser() {
-        System.out.println("\nLogout menu");
+        System.out.println("\nLogout menu ");
         Scanner input = new Scanner(System.in);
         String answer;
         System.out.println("Do you really want to logout? (Y / N): ");
