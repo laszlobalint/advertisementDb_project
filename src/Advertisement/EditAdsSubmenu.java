@@ -8,8 +8,8 @@ public class EditAdsSubmenu extends MainMenu {
     public static void runMenu() throws Exception {
         System.out.println("\nWhat kind of advertisement do you want to edit? ");
         System.out.println("1\t My for rent advertisements");
-        System.out.println("2\t My for sell advertisements");
-        System.out.println("3\t My search for roommates advertisements");
+        System.out.println("2\t My for sale advertisements");
+        System.out.println("3\t My search for inmates advertisements");
         System.out.println("4\t Back to main menu");
         System.out.println("0\t Exit program");
         Scanner kb = new Scanner(System.in);
@@ -29,7 +29,7 @@ public class EditAdsSubmenu extends MainMenu {
         switch (choice) {
             case 0:
                 exit = true;
-                DbManagement.writeToFileUsers();
+                DbManagement.writeToFile();
                 System.out.println("Exiting the program.");
                 System.out.println("Good bye!");
                 break;
@@ -37,10 +37,10 @@ public class EditAdsSubmenu extends MainMenu {
                 ForRent.editForRent();
                 break;
             case 2:
-                //ForSell.editForSell();
+                ForSale.editForSale();
                 break;
             case 3:
-                //SearchRoommate.editSearchRoommate();
+                SearchRoommate.editSearchMate();
                 break;
             case 4:
                 exit = true;

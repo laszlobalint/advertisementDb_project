@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 import static Advertisement.ForRent.rentAds;
+import static Advertisement.ForSale.saleAds;
+import static Advertisement.SearchRoommate.searchAds;
 
 public class BrowseAdsSubmenu extends MainMenu {
     static boolean exit;
@@ -12,7 +14,7 @@ public class BrowseAdsSubmenu extends MainMenu {
         System.out.println("\nHow do you want to search? ");
         System.out.println("1\t Show all for rent ads");
         System.out.println("2\t Show all for sale ads");
-        System.out.println("3\t Show all roommate search ads");
+        System.out.println("3\t Show all inmate search ads");
         System.out.println("4\t Search by user ID");
         System.out.println("5\t Search by advertisement ID");
         System.out.println("6\t Back to main menu");
@@ -34,7 +36,7 @@ public class BrowseAdsSubmenu extends MainMenu {
         switch (choice) {
             case 0:
                 exit = true;
-                DbManagement.writeToFileUsers();
+                DbManagement.writeToFile();
                 System.out.println("Exiting the program.");
                 System.out.println("Good bye!");
                 break;
@@ -45,8 +47,16 @@ public class BrowseAdsSubmenu extends MainMenu {
                 }
                 break;
             case 2:
+                System.out.println("\nAll for sale ads in the database:\n");
+                for (Map.Entry <Integer, ForSale> entry : saleAds.entrySet()) {
+                    System.out.println(entry.getValue().toString());
+                }
                 break;
             case 3:
+                System.out.println("\nAll search for inmates ads in the database:\n");
+                for (Map.Entry <Integer, SearchRoommate> entry : searchAds.entrySet()) {
+                    System.out.println(entry.getValue().toString());
+                }
                 break;
             case 4:
                 System.out.println("\nShow advertisements by user ID:\n");
@@ -65,18 +75,17 @@ public class BrowseAdsSubmenu extends MainMenu {
                         System.out.println(rent.toString() + "\n");
                     }
                 }
-                    /*
-                    for (ForSell sell : sellAds.values()) {
-                        if (sell.getUserId == id) {
-                            System.out.println(sell.toString() + "\n");
-                        }
+                for (ForSale sale : saleAds.values()) {
+                    if (sale.getUserId() == id) {
+                        System.out.println(sale.toString() + "\n");
                     }
-                    for (SearchRoommate mate : mateAds.values()) {
-                        if (mate.getUserId == id) {
-                            System.out.println(mate.toString() + "\n");
-                        }
+                }
+
+                for (SearchRoommate search : searchAds.values()) {
+                    if (search.getUserId() == id) {
+                        System.out.println(search.toString() + "\n");
                     }
-                    */
+                }
                 break;
             case 5:
                 System.out.println("\nShow advertisements by advertisement ID:\n");
@@ -95,18 +104,18 @@ public class BrowseAdsSubmenu extends MainMenu {
                         System.out.println(rent.toString() + "\n");
                     }
                 }
-                    /*
-                    for (ForSell sell : sellAds.values()) {
-                        if (sell.getId == id) {
-                            System.out.println(sell.toString() + "\n");
-                        }
+
+                for (ForSale sale : saleAds.values()) {
+                    if (sale.getId() == id) {
+                        System.out.println(sale.toString() + "\n");
                     }
-                    for (SearchRoommate mate : mateAds.values()) {
-                        if (mate.getId == id) {
-                            System.out.println(mate.toString() + "\n");
-                        }
+                }
+
+                for (SearchRoommate search : searchAds.values()) {
+                    if (search.getId() == id) {
+                        System.out.println(searchAds.toString() + "\n");
                     }
-                    */
+                }
                 break;
             case 6:
                 exit = true;

@@ -9,7 +9,7 @@ public class AddAdsSubmenu extends MainMenu {
         System.out.println("\nWhat kind of advertisement would you like to add? ");
         System.out.println("1\t For rent");
         System.out.println("2\t For sale");
-        System.out.println("3\t Searching for roommate");
+        System.out.println("3\t Searching for inmate");
         System.out.println("4\t Back to main menu");
         System.out.println("0\t Exit program");
         Scanner kb = new Scanner(System.in);
@@ -29,7 +29,7 @@ public class AddAdsSubmenu extends MainMenu {
         switch (choice) {
             case 0:
                 exit = true;
-                DbManagement.writeToFileUsers();
+                DbManagement.writeToFile();
                 System.out.println("Exiting the program.");
                 System.out.println("Good bye!");
                 break;
@@ -37,10 +37,10 @@ public class AddAdsSubmenu extends MainMenu {
                 ForRent.addForRent();
                 break;
             case 2:
-                //ForSell.addForSell();
+                ForSale.addForSale();
                 break;
             case 3:
-                //SearchRoommate.addSeachRoommate();
+                SearchRoommate.addSearchMate();
                 break;
             case 4:
                 exit = true;

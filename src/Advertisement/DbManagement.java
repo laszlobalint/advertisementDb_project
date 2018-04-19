@@ -89,12 +89,33 @@ public class DbManagement {
         Scanner input = new Scanner(System.in);
         System.out.println("\tUser registration");
 
-        System.out.println("Enter your e-mail address: ");
-        while (!input.hasNext("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")) {
-            System.out.println("That's not a regular e-mail address!");
+        System.out.println("Enter your first and last name: ");
+        while (!input.hasNext("(^[A-Z][,.]?[ ]?\\w+|[A-Z]+['-]?\\w+)")) {
+            System.out.println("That's not a regular first and/or last name!");
             input.nextLine();
         }
-        String email = input.nextLine();
+        String name = input.nextLine();
+
+        System.out.println("Enter your username: ");
+        while (!input.hasNext("[a-z0-9_]+")) {
+            System.out.println("Cannot use irregular characters in the username!");
+            input.nextLine();
+        }
+        String username = input.nextLine();
+
+        System.out.println("Enter your password: ");
+        while (!input.hasNext("([a-zA-Z0-9])\\w+")) {
+            System.out.println("Password can contain just number, lower and uppercase fonts!");
+            input.nextLine();
+        }
+        String password = input.nextLine();
+
+        System.out.println("Enter your date of birth using numbers (yyyy-MM-dd): ");
+        while (!input.hasNext("\\d{4}.[01]\\d.[0-3]\\d")) {
+            System.out.println("Irregular date format. Try again!");
+            input.nextLine();
+        }
+        String date = input.next();
 
         System.out.println("Enter your phone number: ");
         while (!input.hasNext("[0-9\\-]*")) {
@@ -102,6 +123,29 @@ public class DbManagement {
             input.nextLine();
         }
         String phone = input.nextLine();
+
+        System.out.println("Enter your e-mail address: ");
+        while (!input.hasNext("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")) {
+            System.out.println("That's not a regular e-mail address!");
+            input.nextLine();
+        }
+        String email = input.nextLine();
+
+        int lastId = 0;
+        for (Integer id : users.keySet()) {
+            if (id > lastId) {
+                lastId = id;
+            }
+        }
+        Users newUser = new Users(lastId + 1, name, username, password, date, phone, email);
+        users.put(newUser.getId(), newUser);
+        System.out.println("You registered successfully!" + '\n' + newUser.toString());
+        return true;
+    }
+
+    public static boolean editUser() {
+        System.out.println("\nYou can change your profile here: ");
+        Scanner input = new Scanner(System.in);
 
         System.out.println("Enter your first and last name: ");
         while (!input.hasNext("(^[A-Z][,.]?[ ]?\\w+|[A-Z]+['-]?\\w+)")) {
@@ -131,71 +175,29 @@ public class DbManagement {
         }
         String date = input.next();
 
-        int lastId = 0;
-        for (Integer id : users.keySet()) {
-            if (id > lastId) {
-                lastId = id;
-            }
-        }
-
-        Users newUser = new Users(lastId + 1, name, username, password, date, phone, email);
-        users.put(newUser.getId(), newUser);
-        System.out.println("You registered successfully!" + '\n' + newUser.toString());
-        return true;
-    }
-
-    public static boolean editUser() {
-        System.out.println("\nYou can change your profile here: ");
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter your e-mail address: ");
-        while (!input.hasNext("^(.+)@(.+)$")) {
-            System.out.println("That's not a regular e-mail address!");
-            input.next();
-        }
-        String email = input.next();
-        activeUser.setEmail(email);
-
         System.out.println("Enter your phone number: ");
         while (!input.hasNext("[0-9\\-]*")) {
             System.out.println("That's not a regular phone number!");
-            input.next();
+            input.nextLine();
         }
-        String phone = input.next();
-        activeUser.setPhone(phone);
+        String phone = input.nextLine();
 
-        System.out.println("Enter your first and last name: ");
-        while (!input.hasNext("(^[A-Z][,.]?[ ]?\\w+|[A-Z]+['-]?\\w+)")) {
-            System.out.println("That's not a regular first and/or last name!");
-            input.next();
+        System.out.println("Enter your e-mail address: ");
+        while (!input.hasNext("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")) {
+            System.out.println("That's not a regular e-mail address!");
+            input.nextLine();
         }
-        String name = input.next();
-        activeUser.setName(name);
+        String email = input.nextLine();
 
-        System.out.println("Enter your username: ");
-        while (!input.hasNext("[a-z0-9_]+")) {
-            System.out.println("Cannot use irregular characters in the username!");
-            input.next();
-        }
-        String username = input.next();
-        activeUser.setUsername(username);
-
-        System.out.println("Enter your password: ");
-        while (!input.hasNext("([a-zA-Z0-9])\\w+")) {
-            System.out.println("Password can contain just number, lower and uppercase fonts!");
-            input.next();
-        }
-        String password = input.next();
-        activeUser.setPassword(password);
-
-        System.out.println("Enter your date of birth using numbers (yyyy-MM-dd): ");
-        while (!input.hasNext("\\d{4}.[01]\\d.[0-3]\\d")) {
-            System.out.println("Irregular date format. Try again!");
-            input.next();
-        }
-        String date = input.next();
-        activeUser.setDateOfBirth(date);
-
-        users.put(activeUser.getId(), activeUser);
+        Users editUser = new Users(activeUser.getId(), name, username, password, date, phone, email);
+        users.replace(activeUser.getId(), editUser);
+        activeUser.setId(editUser.getId());
+        activeUser.setName(editUser.getName());
+        activeUser.setUsername(editUser.getUsername());
+        activeUser.setPassword(editUser.getPassword());
+        activeUser.setDateOfBirth(editUser.getDateOfBirth());
+        activeUser.setPhone(editUser.getPhone());
+        activeUser.setEmail(editUser.getEmail());
         System.out.println("You updated your profile successfully!" + '\n' + activeUser.toString());
         return true;
     }
@@ -205,7 +207,7 @@ public class DbManagement {
         String line;
         System.out.println("\nYou can change your profile here: ");
         Scanner in = new Scanner(System.in);
-        System.out.println("\nDear " + details[1] + "!");
+        System.out.println("\nDear " + activeUser.getName() + "!");
         System.out.println("Do you really want to delete your profile? (Y / N): ");
         String answer;
         answer = in.nextLine().trim().toLowerCase();
@@ -229,7 +231,7 @@ public class DbManagement {
         return true;
     }
 
-    public static boolean writeToFileUsers() throws IOException {
+    public static boolean writeToFile() throws IOException {
         BufferedWriter bw = null;
         bw = new BufferedWriter(new FileWriter("./adsUsers.txt"));
         String content;
@@ -250,6 +252,26 @@ public class DbManagement {
         writeRent.flush();
         writeRent.close();
         System.out.println("For rent advertisements were saved to file!");
+
+        BufferedWriter writeSale = null;
+        writeSale = new BufferedWriter(new FileWriter("adsForSale.txt"));
+        for (ForSale fS : ForSale.getSaleAds().values()) {
+            content = fS.getId() + ";" + fS.getUserId() + ";" + fS.getText() + ";" + fS.getCounty() + ";" + fS.getWasBuilt() + ";" + fS.getPrice() + ";" + fS.isMortgaged() + ";" + fS.getCanBeMoved() + "\n";
+            writeSale.write(content);
+        }
+        writeSale.flush();
+        writeSale.close();
+        System.out.println("For sale advertisements were saved to file!");
+
+        BufferedWriter writeSearch = null;
+        writeSearch = new BufferedWriter(new FileWriter("adsSearchMate.txt"));
+        for (SearchRoommate fM : SearchRoommate.getMateAds().values()) {
+            content = fM.getId() + ";" + fM.getUserId() + ";" + fM.getText() + ";" + fM.getCounty() + ";" + fM.getCautionMonths() + ";" + fM.getMonthlyRent() + ";" + fM.isSmoking() + ";" + fM.isForStudents() + ";" + fM.getCurrentInmate() + ";" + fM.isMan() + ";" + fM.getCanBeMoved() + "\n";
+            writeSearch.write(content);
+        }
+        writeSearch.flush();
+        writeSearch.close();
+        System.out.println("Search for inmate advertisements were saved to file!");
 
         return true;
     }

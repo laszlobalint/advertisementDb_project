@@ -8,3 +8,4 @@
 8;Szamanta Szoke;szokecica;ubuntu69;2000-01-05;06-30-52345352;samanthababy@citromail.hu
 9;Taste Sample;sampleuser;trythisprogramme;1981-08-20;06-20-31226798;samplesimple@google.com
 10;Test Peter;test135;test135;2018-01-01;06-70-6930143143;firsttest@gmail.com
+11;Gyorgyi Vikor;magyartanarno;tancsi001;1956-11-03;;vikor.gyorgyi@gmail.com

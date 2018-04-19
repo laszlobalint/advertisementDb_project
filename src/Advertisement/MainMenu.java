@@ -76,7 +76,7 @@ public class MainMenu {
             switch (choice) {
                 case 0:
                     exit = true;
-                    DbManagement.writeToFileUsers();
+                    DbManagement.writeToFile();
                     System.out.println("Exiting the program.");
                     System.out.println("Good bye!");
                     break;
@@ -93,7 +93,7 @@ public class MainMenu {
             switch (choice) {
                 case 0:
                     exit = true;
-                    DbManagement.writeToFileUsers();
+                    DbManagement.writeToFile();
                     System.out.println("Exiting the program.");
                     System.out.println("Good bye!");
                     break;

@@ -6,21 +6,21 @@ import java.util.TreeMap;
 
 public class Serializer {
 
-    public static void serialize(TreeMap map, String filename) {
+    public static void serialize(Map map, String filename) {
         try {
             FileOutputStream fileOut = new FileOutputStream(filename);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(map);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in /src/" + filename);
+            System.out.printf("Serialized data is saved with the filename: " + filename);
         } catch (IOException i) {
             i.printStackTrace();
         }
     }
 
     public static Map deserialize(String filename) {
-        TreeMap map = null;
+        Map map = null;
         try {
             FileInputStream fileIn = new FileInputStream(filename);
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -30,7 +30,7 @@ public class Serializer {
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
-            System.out.println("HashMap class not found.");
+            System.out.println("Map class not found.");
             c.printStackTrace();
         }
         return map;

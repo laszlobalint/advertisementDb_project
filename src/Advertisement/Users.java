@@ -95,7 +95,7 @@ public class Users {
                 "\nUser ID: " + id + '\n' +
                 "Name: " + name + '\n' +
                 "Username: " + username + '\n' +
-                "Password: " + password + '\n' +
+                "Password: " + Encryption.encrypt(password) + '\n' +
                 "Date of Birth: " + dateOfBirth + '\n' +
                 "Phone number: " + phone + '\n' +
                 "E-mail address: " + email + '\n';
