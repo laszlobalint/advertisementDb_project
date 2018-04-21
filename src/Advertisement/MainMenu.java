@@ -77,6 +77,10 @@ public class MainMenu {
                 case 0:
                     exit = true;
                     DbManagement.writeToFile();
+                    //Serializer.serialize(ForSale.saleAds, "forsale.ser");
+                    //Serializer.serialize(ForRent.rentAds, "forrent.ser");
+                    //Serializer.serialize(SearchRoommate.searchAds, "search.ser");
+                    //Serializer.serialize(DbManagement.users, "users.ser");
                     System.out.println("Exiting the program. ");
                     System.out.println("Good bye! ");
                     break;
@@ -94,6 +98,10 @@ public class MainMenu {
                 case 0:
                     exit = true;
                     DbManagement.writeToFile();
+                    //Serializer.serialize(ForSale.saleAds, "forsale.ser");
+                    //Serializer.serialize(ForRent.rentAds, "forrent.ser");
+                    //Serializer.serialize(SearchRoommate.searchAds, "search.ser");
+                    //Serializer.serialize(DbManagement.users, "users.ser");
                     System.out.println("Exiting the program. ");
                     System.out.println("Good bye! ");
                     break;
