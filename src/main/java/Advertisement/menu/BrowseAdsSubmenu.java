@@ -1,23 +1,29 @@
-package Advertisement;
+package Advertisement.menu;
+
+import Advertisement.adtype.ForRent;
+import Advertisement.adtype.ForSale;
+import Advertisement.adtype.SearchRoommate;
 
 import java.util.Map;
 import java.util.Scanner;
 
-import static Advertisement.ForRent.rentAds;
-import static Advertisement.ForSale.saleAds;
-import static Advertisement.SearchRoommate.searchAds;
+import static Advertisement.Main.dbManagement;
+import static Advertisement.adtype.ForRent.rentAds;
+import static Advertisement.adtype.ForSale.saleAds;
+import static Advertisement.adtype.SearchRoommate.searchAds;
+import static Advertisement.user.DbManagement.users;
 
 public class BrowseAdsSubmenu extends MainMenu {
-    static boolean exit;
+    boolean exit;
 
-    public static void runMenu() throws Exception {
+    public void runMenu() throws Exception {
         System.out.println("\nHow do you want to search? ");
         System.out.println("1\t Show all for rent ads ");
         System.out.println("2\t Show all for sale ads ");
         System.out.println("3\t Show all inmate search ads ");
-        System.out.println("4\t Search by user ID ");
+        System.out.println("4\t Search by Advertisement.user ID ");
         System.out.println("5\t Search by advertisement ID ");
-        System.out.println("6\t Back to main menu ");
+        System.out.println("6\t Back to main Advertisement.menu ");
         System.out.println("0\t Exit program ");
         Scanner kb = new Scanner(System.in);
         int choice = -1;
@@ -32,11 +38,11 @@ public class BrowseAdsSubmenu extends MainMenu {
         performAction(choice);
     }
 
-    public static void performAction(int choice) throws Exception {
+    public void performAction(int choice) throws Exception {
         switch (choice) {
             case 0:
                 exit = true;
-                DbManagement.writeToFile();
+                dbManagement.writeToFile();
                 System.out.println("Exiting the program. ");
                 System.out.println("Good bye! ");
                 break;
@@ -59,15 +65,15 @@ public class BrowseAdsSubmenu extends MainMenu {
                 }
                 break;
             case 4:
-                System.out.println("\nShow advertisements by user ID: \n");
+                System.out.println("\nShow advertisements by Advertisement.user ID: \n");
                 Scanner kb = new Scanner(System.in);
                 int id = -1;
-                while (id < 0 || id > DbManagement.users.lastKey()) {
+                while (id < 0 || id > users.lastKey()) {
                     try {
-                        System.out.print("\nGive a user ID: ");
+                        System.out.print("\nGive a Advertisement.user ID: ");
                         id = Integer.parseInt(kb.nextLine());
                     } catch (NumberFormatException e) {
-                        System.out.print("Invalid selection. Give an existing user ID. ");
+                        System.out.print("Invalid selection. Give an existing Advertisement.user ID. ");
                     }
                 }
                 for (ForRent rent : rentAds.values()) {
@@ -96,7 +102,7 @@ public class BrowseAdsSubmenu extends MainMenu {
                         System.out.print("\nGive an advertisement ID: ");
                         id = Integer.parseInt(sb.nextLine());
                     } catch (NumberFormatException e) {
-                        System.out.print("Invalid selection. Give an existing user ID. ");
+                        System.out.print("Invalid selection. Give an existing Advertisement.user ID. ");
                     }
                 }
                 for (ForRent rent : rentAds.values()) {

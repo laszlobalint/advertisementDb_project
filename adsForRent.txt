@@ -3,4 +3,5 @@
 3;1;Pets are allowed, in a newly built house.;Bekes;1;600;300;false;false;2018-07-20
 4;2;Party flat for crazy kids and nasty students.;Szabadka;2;350;150;true;true;2018-06-10
 5;4;Amazing conditions, full HD television, fast internet.;Debrecen;1;450;250;false;true;2018-09-01
-6;10;This is a test advertisement for test user.;Florida;4;1000;400;true;false;2018-10-01
+6;10;This is a test advertisement for test Advertisement.user.;Florida;4;1000;400;true;false;2018-10-01
+7;3;I have flat for rent.;Csongard;2;1000;300;false;false;2018-06-06

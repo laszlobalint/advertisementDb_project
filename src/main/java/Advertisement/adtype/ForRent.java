@@ -1,4 +1,4 @@
-package Advertisement;
+package Advertisement.adtype;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,47 +7,49 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-import static Advertisement.DbManagement.activeUser;
-import static Advertisement.Users.details;
+import static Advertisement.user.DbManagement.activeUser;
+import static Advertisement.user.Users.details;
 
-public class SearchRoommate {
+public class ForRent {
+    public static Map <Integer, ForRent> rentAds = new TreeMap <>();
+
     protected int id;
     protected int userId;
     protected String text;
     protected String county;
     protected int cautionMonths;
     protected int monthlyRent;
+    protected int currentExpenses;
     protected boolean isSmoking;
     protected boolean isForStudents;
-    protected int currentInmate;
-    protected boolean isMan;
     protected String canBeMoved;
 
-    static Map <Integer, SearchRoommate> searchAds = new TreeMap <>();
-
-    public SearchRoommate(int id, int userId, String text, String county, int cautionMonths, int monthlyRent, boolean isSmoking, boolean isForStudents, int currentInmate, boolean isMan, String canBeMoved) {
+    public ForRent(int id, int userId, String text, String county, int cautionMonths, int monthlyRent, int currentExpenses, boolean isSmoking, boolean isForStudents, String canBeMoved) {
         this.id = id;
         this.userId = userId;
         this.text = text;
         this.county = county;
         this.cautionMonths = cautionMonths;
         this.monthlyRent = monthlyRent;
+        this.currentExpenses = currentExpenses;
         this.isSmoking = isSmoking;
         this.isForStudents = isForStudents;
-        this.currentInmate = currentInmate;
-        this.isMan = isMan;
         this.canBeMoved = canBeMoved;
     }
 
-    public static boolean loadSearchMate() {
+    public ForRent() {
+    }
+
+    public boolean loadForRent() {
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader("adsSearchMate.txt"));
-            String line = null;
+            reader = new BufferedReader(new FileReader("adsForRent.txt"));
+            String line;
+            line = null;
             while ((line = reader.readLine()) != null) {
                 details = line.split(";");
-                SearchRoommate newSearchMate = new SearchRoommate(Integer.parseInt(details[0]), Integer.parseInt(details[1]), details[2], details[3], Integer.parseInt(details[4]), Integer.parseInt(details[5]), Boolean.parseBoolean(details[6]), Boolean.parseBoolean(details[7]), Integer.parseInt(details[8]), Boolean.parseBoolean(details[9]), details[10]);
-                searchAds.put(newSearchMate.getId(), newSearchMate);
+                ForRent newForRent = new ForRent(Integer.parseInt(details[0]), Integer.parseInt(details[1]), details[2], details[3], Integer.parseInt(details[4]), Integer.parseInt(details[5]), Integer.parseInt(details[6]), Boolean.parseBoolean(details[7]), Boolean.parseBoolean(details[8]), details[9]);
+                rentAds.put(newForRent.getId(), newForRent);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,9 +63,9 @@ public class SearchRoommate {
         return true;
     }
 
-    public static boolean addSearchMate() {
+    public boolean addForRent() {
         Scanner input = new Scanner(System.in);
-        System.out.println("\tAdd new advertisement (search for inmate) ");
+        System.out.println("\tAdd new advertisement (for rent)");
 
         System.out.println("Advertisement information: ");
         while (!input.hasNext("\\w+")) {
@@ -93,6 +95,13 @@ public class SearchRoommate {
         }
         int monthlyRent = Integer.parseInt(input.next());
 
+        System.out.println("Current expenses (approximately) per month: ");
+        while (!input.hasNext("\\d+")) {
+            System.out.println("Give a regular number!");
+            input.nextLine();
+        }
+        int currentExpenses = Integer.parseInt(input.next());
+
         System.out.println("Is smoking allowed? (true or false) ");
         while (!input.hasNext("true|false")) {
             System.out.println("Choose 'true' or 'false'!");
@@ -107,20 +116,6 @@ public class SearchRoommate {
         }
         boolean isStudent = Boolean.parseBoolean(input.next());
 
-        System.out.println("How many housemates are already in the flat/house: ");
-        while (!input.hasNext("\\d+")) {
-            System.out.println("Give a regular number!");
-            input.nextLine();
-        }
-        int currentInMate = Integer.parseInt(input.next());
-
-        System.out.println("Are you looking for man? (true or false) ");
-        while (!input.hasNext("true|false")) {
-            System.out.println("Choose 'true' or 'false'!");
-            input.nextLine();
-        }
-        boolean isMan = Boolean.parseBoolean(input.next());
-
         System.out.println("Enter the earliest date of moving in (yyyy-MM-dd): ");
         while (!input.hasNext("\\d{4}.[01]\\d.[0-3]\\d")) {
             System.out.println("Irregular date format. Try again!");
@@ -129,19 +124,19 @@ public class SearchRoommate {
         String moveIn = input.next();
 
         int lastId = 0;
-        for (Integer id : searchAds.keySet()) {
+        for (Integer id : rentAds.keySet()) {
             if (id > lastId) {
                 lastId = id;
             }
         }
 
-        SearchRoommate newSearch = new SearchRoommate(lastId + 1, activeUser.getId(), text, county, cautionMonths, monthlyRent, isSmoking, isStudent, currentInMate, isMan, moveIn);
-        searchAds.put(activeUser.getId(), newSearch);
-        System.out.println("You picked up an advertisement successfully! " + '\n' + newSearch.toString());
+        ForRent newRent = new ForRent(lastId + 1, activeUser.getId(), text, county, cautionMonths, monthlyRent, currentExpenses, isSmoking, isStudent, moveIn);
+        rentAds.put(newRent.getId(), newRent);
+        System.out.println("You picked up an advertisement successfully! " + '\n' + newRent.toString());
         return true;
     }
 
-    public static boolean editSearchMate() {
+    public boolean editForRent() {
         Scanner input = new Scanner(System.in);
         System.out.println("\tYou can change your advertisement here ");
         System.out.println("Give an ID of your advertisement: ");
@@ -149,11 +144,12 @@ public class SearchRoommate {
             input.nextLine();
         }
         int idEdit = Integer.parseInt(input.next());
-        for (SearchRoommate search : searchAds.values()) {
-            if ((search.getUserId() == activeUser.getId()) && search.getId() == idEdit) {
-                System.out.println(search.toString() + "\n");
+        for (ForRent rent : rentAds.values()) {
+            if ((rent.getUserId() == activeUser.getId()) && rent.getId() == idEdit) {
+                System.out.println(rent.toString() + "\n");
 
                 System.out.println("Advertisement information: ");
+
                 while (!input.hasNext("\\w+")) {
                     System.out.println("Give a text description for your advertisement!");
                     input.nextLine();
@@ -181,59 +177,52 @@ public class SearchRoommate {
                 }
                 int monthlyRent = Integer.parseInt(input.nextLine());
 
+                System.out.println("Current expenses (approximately) per month: ");
+                while (!input.hasNext("\\d+")) {
+                    System.out.println("Give a regular number!");
+                    input.nextLine();
+                }
+                int currentExpenses = Integer.parseInt(input.nextLine());
+
                 System.out.println("Is smoking allowed? (true or false) ");
                 while (!input.hasNext("true|false")) {
                     System.out.println("Choose 'true' or 'false'!");
                     input.nextLine();
                 }
-                boolean isSmoking = Boolean.parseBoolean(input.next());
+                boolean isSmoking = Boolean.parseBoolean(input.nextLine());
 
                 System.out.println("Is it available for students? (true or false) ");
                 while (!input.hasNext("true|false")) {
                     System.out.println("Choose 'true' or 'false'!");
                     input.nextLine();
                 }
-                boolean isStudent = Boolean.parseBoolean(input.next());
-
-                System.out.println("How many housemates are already in the flat/house: ");
-                while (!input.hasNext("\\d+")) {
-                    System.out.println("Give a regular number!");
-                    input.nextLine();
-                }
-                int currentInMate = Integer.parseInt(input.next());
-
-                System.out.println("Are you looking for man? (true or false) ");
-                while (!input.hasNext("true|false")) {
-                    System.out.println("Choose 'true' or 'false'!");
-                    input.nextLine();
-                }
-                boolean isMan = Boolean.parseBoolean(input.next());
+                boolean isStudent = Boolean.parseBoolean(input.nextLine());
 
                 System.out.println("Enter the earliest date of moving in (yyyy-MM-dd): ");
                 while (!input.hasNext("\\d{4}.[01]\\d.[0-3]\\d")) {
                     System.out.println("Irregular date format. Try again!");
-                    input.nextLine();
+                    input.next();
                 }
                 String moveIn = input.next();
 
                 int lastId = 0;
-                for (Integer id : searchAds.keySet()) {
+                for (Integer id : rentAds.keySet()) {
                     if (id > lastId) {
                         lastId = id;
                     }
                 }
-                SearchRoommate editSearch = new SearchRoommate(idEdit, activeUser.getId(), text, county, cautionMonths, monthlyRent, isSmoking, isStudent, currentInMate, isMan, moveIn);
-                searchAds.replace(idEdit, editSearch);
-                System.out.println("You changed an advertisement successfully!" + '\n' + editSearch.toString());
+                ForRent editRent = new ForRent(idEdit, activeUser.getId(), text, county, cautionMonths, monthlyRent, currentExpenses, isSmoking, isStudent, moveIn);
+                rentAds.replace(idEdit, editRent);
+                System.out.println("You changed an advertisement successfully! " + '\n' + editRent.toString());
             }
         }
         return true;
     }
 
-    public static boolean deleteSearchMate() throws IOException {
+    public boolean deleteForRent() throws IOException {
         BufferedReader reader = null;
         String line;
-        System.out.println("\nYou can delete your search for inmate advertisement here: ");
+        System.out.println("\nYou can delete your for rent advertisement here: ");
         Scanner in = new Scanner(System.in);
         System.out.println("Give an ID of your advertisement: ");
         while (!in.hasNext("\\d+")) {
@@ -245,10 +234,10 @@ public class SearchRoommate {
         String answer = input.nextLine().trim().toLowerCase();
         switch (answer) {
             case "y":
-                for (SearchRoommate search: searchAds.values()) {
-                    if ((search.getUserId() == activeUser.getId()) && search.getId() == idRemove) {
-                        System.out.println(search.toString() + "\n");
-                        searchAds.remove(idRemove);
+                for (ForRent rent : rentAds.values()) {
+                    if ((rent.getUserId() == activeUser.getId()) && rent.getId() == idRemove) {
+                        System.out.println(rent.toString() + "\n");
+                        rentAds.remove(idRemove);
                         System.out.println("\nYou deleted this advertisement!");
                     } else {
                         System.out.println("No such advertisement with the given ID!");
@@ -262,6 +251,14 @@ public class SearchRoommate {
                 break;
         }
         return true;
+    }
+
+    public static Map <Integer, ForRent> getRentAds() {
+        return rentAds;
+    }
+
+    public static void setRentAds(Map <Integer, ForRent> rentAds) {
+        ForRent.rentAds = rentAds;
     }
 
     public int getId() {
@@ -304,9 +301,21 @@ public class SearchRoommate {
         this.cautionMonths = cautionMonths;
     }
 
-    public int getMonthlyRent() { return monthlyRent; }
+    public int getMonthlyRent() {
+        return monthlyRent;
+    }
 
-    public void setMonthlyRent(int monthlyRent) { this.monthlyRent = monthlyRent; }
+    public void setMonthlyRent(int monthlyRent) {
+        this.monthlyRent = monthlyRent;
+    }
+
+    public int getCurrentExpenses() {
+        return currentExpenses;
+    }
+
+    public void setCurrentExpenses(int currentExpenses) {
+        this.currentExpenses = currentExpenses;
+    }
 
     public boolean isSmoking() {
         return isSmoking;
@@ -324,22 +333,6 @@ public class SearchRoommate {
         isForStudents = forStudents;
     }
 
-    public int getCurrentInmate() {
-        return currentInmate;
-    }
-
-    public void setCurrentInmate(int currentInmate) {
-        this.currentInmate = currentInmate;
-    }
-
-    public boolean isMan() {
-        return isMan;
-    }
-
-    public void setMan(boolean man) {
-        isMan = man;
-    }
-
     public String getCanBeMoved() {
         return canBeMoved;
     }
@@ -348,24 +341,16 @@ public class SearchRoommate {
         this.canBeMoved = canBeMoved;
     }
 
-    public static Map <Integer, SearchRoommate> getMateAds() {
-        return searchAds;
-    }
-
-    public static void setMateAds(Map <Integer, SearchRoommate> searchAds) {
-        SearchRoommate.searchAds = searchAds;
-    }
-
     @Override
     public String toString() {
-        return "\nSearching for inmate: " + '\n' +
+        return "\nFlat/House for rent: " + '\n' +
                 "\nText of advertisement: " + text + '\n' +
                 "County: " + county + '\n' +
                 "Months of caution: " + cautionMonths + '\n' +
+                "Monthly rent ($/M): " + monthlyRent + '\n' +
+                "Estimated current expenses ($/M): " + currentExpenses + '\n' +
                 "Smoking allowed: " + (isSmoking ? " yes" : " no") + '\n' +
                 "Available for students: " + (isForStudents ? " yes" : " no") + '\n' +
-                "Current number of inmates: " + currentInmate + '\n' +
-                "Looking for: " + (isMan ? " man" : " woman") + '\n' +
                 "Earliest date of moving in: " + canBeMoved + '\n';
     }
 }

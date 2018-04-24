@@ -1,4 +1,8 @@
-package Advertisement;
+package Advertisement.user;
+
+import Advertisement.adtype.ForRent;
+import Advertisement.adtype.ForSale;
+import Advertisement.adtype.SearchRoommate;
 
 import java.io.*;
 import java.util.Map;
@@ -6,13 +10,13 @@ import java.util.NavigableMap;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-import static Advertisement.Users.details;
+import static Advertisement.user.Users.details;
 
 public class DbManagement {
-    static NavigableMap <Integer, Users> users = new TreeMap <>();
-    static Users activeUser = new Users();
+    public static NavigableMap <Integer, Users> users = new TreeMap <>();
+    public static Users activeUser = new Users();
 
-    public static boolean loadUsers() {
+    public boolean loadUsers() {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader("./adsUsers.txt"));
@@ -35,8 +39,8 @@ public class DbManagement {
         return true;
     }
 
-    public static boolean loginUser() {
-        System.out.println("\n Login menu ");
+    public boolean loginUser() {
+        System.out.println("\n Login Advertisement.menu ");
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your username: ");
         String usernameLogin = input.next();
@@ -65,8 +69,8 @@ public class DbManagement {
         return true;
     }
 
-    public static boolean logoutUser() {
-        System.out.println("\nLogout menu ");
+    public boolean logoutUser() {
+        System.out.println("\nLogout Advertisement.menu ");
         Scanner input = new Scanner(System.in);
         String answer;
         System.out.println("Do you really want to logout? (Y / N): ");
@@ -85,7 +89,7 @@ public class DbManagement {
         return true;
     }
 
-    public static boolean addUser() {
+    public boolean addUser() {
         Scanner input = new Scanner(System.in);
         System.out.println("\tUser registration");
 
@@ -143,7 +147,7 @@ public class DbManagement {
         return true;
     }
 
-    public static boolean editUser() {
+    public boolean editUser() {
         System.out.println("\nYou can change your profile here: ");
         Scanner input = new Scanner(System.in);
 
@@ -202,7 +206,7 @@ public class DbManagement {
         return true;
     }
 
-    public static boolean deleteUser() {
+    public boolean deleteUser() {
         BufferedReader reader = null;
         String line;
         System.out.println("\nYou can change your profile here: ");
@@ -217,7 +221,7 @@ public class DbManagement {
                     line = reader.readLine();
                     users.remove(activeUser.getId());
                     System.out.println("\nYou deleted this profile!");
-                    Users.setIsLoggedIn(false);
+                    activeUser.setIsLoggedIn(false);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -231,7 +235,7 @@ public class DbManagement {
         return true;
     }
 
-    public static boolean writeToFile() throws IOException {
+    public boolean writeToFile() throws IOException {
         BufferedWriter bw = null;
         bw = new BufferedWriter(new FileWriter("./adsUsers.txt"));
         String content;
@@ -280,15 +284,15 @@ public class DbManagement {
         return users;
     }
 
-    public static void setUsers(Map <Integer, Users> users) {
+    public void setUsers(Map <Integer, Users> users) {
         DbManagement.users = (NavigableMap <Integer, Users>) users;
     }
 
-    public static Users getActiveUser() {
+    public Users getActiveUser() {
         return activeUser;
     }
 
-    public static void setActiveUser(Users activeUser) {
+    public void setActiveUser(Users activeUser) {
         DbManagement.activeUser = activeUser;
     }
 }

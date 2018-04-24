@@ -1,7 +1,10 @@
-package Advertisement;
+package Advertisement.user;
+
+import static Advertisement.Main.encryption;
 
 public class Users {
-    static boolean isLoggedIn = false;
+
+    protected static boolean isLoggedIn = false;
     protected int id;
     protected String name;
     protected String username;
@@ -9,7 +12,7 @@ public class Users {
     protected String dateOfBirth;
     protected String phone;
     protected String email;
-    static String[] details;
+    public static String[] details;
 
     public Users(int id, String name, String username, String password, String dateOfBirth, String phone, String email) {
         this.id = id;
@@ -28,9 +31,9 @@ public class Users {
 
     public void setId(int id) { this.id = id; }
 
-    public static boolean isIsLoggedIn() { return isLoggedIn; }
+    public boolean isIsLoggedIn() { return isLoggedIn; }
 
-    public static void setIsLoggedIn(boolean isLoggedIn) { Users.isLoggedIn = isLoggedIn; }
+    public void setIsLoggedIn(boolean isLoggedIn) { Users.isLoggedIn = isLoggedIn; }
 
     public String getName() { return name; }
 
@@ -62,7 +65,7 @@ public class Users {
                 "\nUser ID: " + id + '\n' +
                 "Name: " + name + '\n' +
                 "Username: " + username + '\n' +
-                "Password: " + Encryption.encrypt(password) + '\n' +
+                "Password: " + encryption.encrypt(password) + '\n' +
                 "Date of Birth: " + dateOfBirth + '\n' +
                 "Phone number: " + phone + '\n' +
                 "E-mail address: " + email + '\n';

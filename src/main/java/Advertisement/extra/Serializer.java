@@ -1,12 +1,11 @@
-package Advertisement;
+package Advertisement.extra;
 
 import java.io.*;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Serializer {
-
-    public static void serialize(Map map, String filename) {
+    public void serialize(Map map, String filename) {
         try {
             FileOutputStream fileOut = new FileOutputStream(filename);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -19,7 +18,7 @@ public class Serializer {
         }
     }
 
-    public static Map deserialize(String filename) {
+    public Map deserialize(String filename) {
         Map map = null;
         try {
             FileInputStream fileIn = new FileInputStream(filename);

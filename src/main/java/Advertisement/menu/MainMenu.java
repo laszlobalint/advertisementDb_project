@@ -1,11 +1,18 @@
-package Advertisement;
+package Advertisement.menu;
 
 import java.util.Scanner;
 
-public class MainMenu {
-    static boolean exit;
+import static Advertisement.Main.*;
+import static Advertisement.adtype.ForRent.rentAds;
+import static Advertisement.adtype.ForSale.saleAds;
+import static Advertisement.adtype.SearchRoommate.searchAds;
+import static Advertisement.user.DbManagement.activeUser;
+import static Advertisement.user.DbManagement.users;
 
-    public static void runMenu() throws Exception {
+public class MainMenu {
+    boolean exit;
+
+    public void runMenu() throws Exception {
         printHead();
         while (!exit) {
             printMenu();
@@ -14,8 +21,8 @@ public class MainMenu {
         }
     }
 
-    public static void printMenu() {
-        if (!Users.isIsLoggedIn()) {
+    public void printMenu() {
+        if (!activeUser.isIsLoggedIn()) {
             System.out.println("\nPlease, make your choice: ");
             System.out.println("1\t Registration ");
             System.out.println("2\t Login user ");
@@ -23,7 +30,7 @@ public class MainMenu {
         } else {
             System.out.println("\nPlease, make your choice: ");
             System.out.println("1\t Registration ");
-            System.out.println("2\t Login user ");
+            System.out.println("2\t Login Advertisement.user ");
             System.out.println("3\t Add new advertisement ");
             System.out.println("4\t Browse advertisements ");
             System.out.println("5\t Edit an advertisement ");
@@ -36,7 +43,7 @@ public class MainMenu {
         }
     }
 
-    public static void printHead() {
+    public void printHead() {
         System.out.println("+---------------------------------------+");
         System.out.println("+            Welcome to my              +");
         System.out.println("+            advertisement              +");
@@ -44,10 +51,10 @@ public class MainMenu {
         System.out.println("+---------------------------------------+");
     }
 
-    public static int getInput() {
+    public int getInput() {
         Scanner kb = new Scanner(System.in);
         int choice = -1;
-        if (!Users.isIsLoggedIn()) {
+        if (!activeUser.isIsLoggedIn()) {
             while (choice < 0 || choice > 2) {
                 try {
                     System.out.print("\nEnter your choice: ");
@@ -70,13 +77,18 @@ public class MainMenu {
         }
     }
 
-    public static void performAction(int choice) throws Exception {
-        Users user = new Users();
-        if (!Users.isIsLoggedIn()) {
+    public void performAction(int choice) throws Exception {
+        if (!activeUser.isIsLoggedIn()) {
             switch (choice) {
                 case 0:
                     exit = true;
-                    DbManagement.writeToFile();
+                    dbManagement.writeToFile();
+                    dbConnector.connect();
+                    saveDataDb.insertUsers(users);
+                    saveDataDb.insertForRent(rentAds);
+                    saveDataDb.insertForSale(saleAds);
+                    saveDataDb.insertSearchMate(searchAds);
+                    dbConnector.closeConnection();
                     //Serializer.serialize(ForSale.saleAds, "forsale.ser");
                     //Serializer.serialize(ForRent.rentAds, "forrent.ser");
                     //Serializer.serialize(SearchRoommate.searchAds, "search.ser");
@@ -85,10 +97,10 @@ public class MainMenu {
                     System.out.println("Good bye! ");
                     break;
                 case 1:
-                    DbManagement.addUser();
+                    dbManagement.addUser();
                     break;
                 case 2:
-                    DbManagement.loginUser();
+                    dbManagement.loginUser();
                     break;
                 default:
                     System.out.println("An unknown error has occurred. ");
@@ -97,7 +109,13 @@ public class MainMenu {
             switch (choice) {
                 case 0:
                     exit = true;
-                    DbManagement.writeToFile();
+                    dbManagement.writeToFile();
+                    dbConnector.connect();
+                    saveDataDb.insertUsers(users);
+                    saveDataDb.insertForRent(rentAds);
+                    saveDataDb.insertForSale(saleAds);
+                    saveDataDb.insertSearchMate(searchAds);
+                    dbConnector.closeConnection();
                     //Serializer.serialize(ForSale.saleAds, "forsale.ser");
                     //Serializer.serialize(ForRent.rentAds, "forrent.ser");
                     //Serializer.serialize(SearchRoommate.searchAds, "search.ser");
@@ -106,34 +124,34 @@ public class MainMenu {
                     System.out.println("Good bye! ");
                     break;
                 case 1:
-                    DbManagement.addUser();
+                    dbManagement.addUser();
                     break;
                 case 2:
-                    DbManagement.loginUser();
+                    dbManagement.loginUser();
                     break;
                 case 3:
-                    AddAdsSubmenu.runMenu();
+                    addAdsSubmenu.runMenu();
                     break;
                 case 4:
-                    BrowseAdsSubmenu.runMenu();
+                    browseAdsSubmenu.runMenu();
                     break;
                 case 5:
-                    EditAdsSubmenu.runMenu();
+                    editAdsSubmenu.runMenu();
                     break;
                 case 6:
-                    DeleteAdsSubmenu.runMenu();
+                    deleteAdsSubmenu.runMenu();
                     break;
                 case 7:
-                    DbManagement.logoutUser();
+                    dbManagement.logoutUser();
                     break;
                 case 8:
-                    System.out.println(DbManagement.activeUser.toString());
+                    System.out.println(dbManagement.activeUser.toString());
                     break;
                 case 9:
-                    DbManagement.editUser();
+                    dbManagement.editUser();
                     break;
                 case 10:
-                    DbManagement.deleteUser();
+                    dbManagement.deleteUser();
                     break;
                 default:
                     System.out.println("An unknown error has occurred. ");

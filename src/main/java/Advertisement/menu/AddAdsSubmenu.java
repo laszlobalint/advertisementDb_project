@@ -1,16 +1,20 @@
-package Advertisement;
+package Advertisement.menu;
+
+import Advertisement.Main;
 
 import java.util.Scanner;
 
-public class AddAdsSubmenu extends MainMenu {
-    static boolean exit;
+import static Advertisement.Main.*;
 
-    public static void runMenu() throws Exception {
+public class AddAdsSubmenu extends MainMenu {
+    boolean exit;
+
+    public void runMenu() throws Exception {
         System.out.println("\nWhat kind of advertisement would you like to add? ");
         System.out.println("1\t For rent ");
         System.out.println("2\t For sale ");
         System.out.println("3\t Searching for inmate ");
-        System.out.println("4\t Back to main menu ");
+        System.out.println("4\t Back to main Advertisement.menu ");
         System.out.println("0\t Exit program ");
         Scanner kb = new Scanner(System.in);
         int choice = -1;
@@ -25,22 +29,22 @@ public class AddAdsSubmenu extends MainMenu {
         performAction(choice);
     }
 
-    public static void performAction(int choice) throws Exception {
+    public void performAction(int choice) throws Exception {
         switch (choice) {
             case 0:
                 exit = true;
-                DbManagement.writeToFile();
+                Main.dbManagement.writeToFile();
                 System.out.println("Exiting the program. ");
                 System.out.println("Good bye! ");
                 break;
             case 1:
-                ForRent.addForRent();
+                forRent.addForRent();
                 break;
             case 2:
-                ForSale.addForSale();
+                forSale.addForSale();
                 break;
             case 3:
-                SearchRoommate.addSearchMate();
+                searchRoommate.addSearchMate();
                 break;
             case 4:
                 exit = true;

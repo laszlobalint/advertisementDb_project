@@ -1,4 +1,4 @@
-package Advertisement;
+package Advertisement.adtype;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-import static Advertisement.DbManagement.activeUser;
-import static Advertisement.Users.details;
+import static Advertisement.user.DbManagement.activeUser;
+import static Advertisement.user.Users.details;
 
 public class ForSale {
     protected int id;
@@ -20,7 +20,7 @@ public class ForSale {
     protected boolean isMortgaged;
     protected String canBeMoved;
 
-    static Map <Integer, ForSale> saleAds = new TreeMap <>();
+    public static Map <Integer, ForSale> saleAds = new TreeMap <>();
 
     public ForSale(int id, int userId, String text, String county, int wasBuilt, int price, boolean isMortgaged, String canBeMoved) {
         this.id = id;
@@ -33,7 +33,10 @@ public class ForSale {
         this.canBeMoved = canBeMoved;
     }
 
-    public static boolean loadForSale() {
+    public ForSale() {
+    }
+
+    public boolean loadForSale() {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader("adsForSale.txt"));
@@ -55,7 +58,7 @@ public class ForSale {
         return true;
     }
 
-    public static boolean addForSale() {
+    public boolean addForSale() {
         Scanner input = new Scanner(System.in);
         System.out.println("\tAdd new advertisement (for sale) ");
 
@@ -114,7 +117,7 @@ public class ForSale {
         return true;
     }
 
-    public static boolean editForSale() {
+    public boolean editForSale() {
         Scanner input = new Scanner(System.in);
         System.out.println("\tYou can change your advertisement here ");
         System.out.println("Give an ID of your advertisement: ");
@@ -183,7 +186,7 @@ public class ForSale {
         return true;
     }
 
-    public static boolean deleteForSale() throws IOException {
+    public boolean deleteForSale() throws IOException {
         BufferedReader reader = null;
         String line;
         System.out.println("\nYou can delete your for sale advertisement here: ");

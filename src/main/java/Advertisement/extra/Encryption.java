@@ -1,12 +1,12 @@
-package Advertisement;
+package Advertisement.extra;
 
 public class Encryption {
 
-    private static final int[] chain = {
+    private final int[] chain = {
             1941, 12394, 37913, 9023, 21111, 193, 459, 834
     };
 
-    public static String encrypt(String key) {
+    public String encrypt(String key) {
         String result = "";
         int length = key.length();
         char ch;
@@ -23,7 +23,7 @@ public class Encryption {
         return result;
     }
 
-    public static String decrypt(String key) {
+    public String decrypt(String key) {
         String result = "";
         int length = key.length();
         char ch;
