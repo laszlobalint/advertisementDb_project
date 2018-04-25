@@ -1,8 +1,10 @@
 package Advertisement.user;
 
-import static Advertisement.Main.encryption;
+import Advertisement.extra.Encryption;
 
 public class Users {
+
+    Encryption encryption = new Encryption();
 
     protected static boolean isLoggedIn = false;
     protected int id;

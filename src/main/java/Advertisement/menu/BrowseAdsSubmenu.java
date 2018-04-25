@@ -21,9 +21,9 @@ public class BrowseAdsSubmenu extends MainMenu {
         System.out.println("1\t Show all for rent ads ");
         System.out.println("2\t Show all for sale ads ");
         System.out.println("3\t Show all inmate search ads ");
-        System.out.println("4\t Search by Advertisement.user ID ");
+        System.out.println("4\t Search by user ID ");
         System.out.println("5\t Search by advertisement ID ");
-        System.out.println("6\t Back to main Advertisement.menu ");
+        System.out.println("6\t Back to main menu ");
         System.out.println("0\t Exit program ");
         Scanner kb = new Scanner(System.in);
         int choice = -1;
@@ -65,7 +65,7 @@ public class BrowseAdsSubmenu extends MainMenu {
                 }
                 break;
             case 4:
-                System.out.println("\nShow advertisements by Advertisement.user ID: \n");
+                System.out.println("\nShow advertisements by user ID: \n");
                 Scanner kb = new Scanner(System.in);
                 int id = -1;
                 while (id < 0 || id > users.lastKey()) {
@@ -73,7 +73,7 @@ public class BrowseAdsSubmenu extends MainMenu {
                         System.out.print("\nGive a Advertisement.user ID: ");
                         id = Integer.parseInt(kb.nextLine());
                     } catch (NumberFormatException e) {
-                        System.out.print("Invalid selection. Give an existing Advertisement.user ID. ");
+                        System.out.print("Invalid selection. Give an existing user ID. ");
                     }
                 }
                 for (ForRent rent : rentAds.values()) {
@@ -102,7 +102,7 @@ public class BrowseAdsSubmenu extends MainMenu {
                         System.out.print("\nGive an advertisement ID: ");
                         id = Integer.parseInt(sb.nextLine());
                     } catch (NumberFormatException e) {
-                        System.out.print("Invalid selection. Give an existing Advertisement.user ID. ");
+                        System.out.print("Invalid selection. Give an existing user ID. ");
                     }
                 }
                 for (ForRent rent : rentAds.values()) {

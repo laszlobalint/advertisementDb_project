@@ -12,7 +12,7 @@ public class EditAdsSubmenu extends MainMenu {
         System.out.println("1\t My for rent advertisements ");
         System.out.println("2\t My for sale advertisements ");
         System.out.println("3\t My search for inmates advertisements ");
-        System.out.println("4\t Back to main Advertisement.menu ");
+        System.out.println("4\t Back to main menu ");
         System.out.println("0\t Exit program ");
         Scanner kb = new Scanner(System.in);
         int choice = -1;

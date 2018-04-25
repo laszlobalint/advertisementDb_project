@@ -1,5 +1,8 @@
 package Advertisement.menu;
 
+import Advertisement.dbaccess.DbConnector;
+import Advertisement.dbaccess.SaveDataDb;
+
 import java.util.Scanner;
 
 import static Advertisement.Main.*;
@@ -10,6 +13,8 @@ import static Advertisement.user.DbManagement.activeUser;
 import static Advertisement.user.DbManagement.users;
 
 public class MainMenu {
+    DbConnector dbConnector = new DbConnector("root", "toor");
+    SaveDataDb saveDataDb = new SaveDataDb();
     boolean exit;
 
     public void runMenu() throws Exception {
@@ -89,10 +94,6 @@ public class MainMenu {
                     saveDataDb.insertForSale(saleAds);
                     saveDataDb.insertSearchMate(searchAds);
                     dbConnector.closeConnection();
-                    //Serializer.serialize(ForSale.saleAds, "forsale.ser");
-                    //Serializer.serialize(ForRent.rentAds, "forrent.ser");
-                    //Serializer.serialize(SearchRoommate.searchAds, "search.ser");
-                    //Serializer.serialize(DbManagement.users, "users.ser");
                     System.out.println("Exiting the program. ");
                     System.out.println("Good bye! ");
                     break;
@@ -116,10 +117,6 @@ public class MainMenu {
                     saveDataDb.insertForSale(saleAds);
                     saveDataDb.insertSearchMate(searchAds);
                     dbConnector.closeConnection();
-                    //Serializer.serialize(ForSale.saleAds, "forsale.ser");
-                    //Serializer.serialize(ForRent.rentAds, "forrent.ser");
-                    //Serializer.serialize(SearchRoommate.searchAds, "search.ser");
-                    //Serializer.serialize(DbManagement.users, "users.ser");
                     System.out.println("Exiting the program. ");
                     System.out.println("Good bye! ");
                     break;

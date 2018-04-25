@@ -11,6 +11,7 @@ import static Advertisement.user.DbManagement.activeUser;
 import static Advertisement.user.Users.details;
 
 public class ForRent {
+    ForRent forRent = new ForRent();
     public static Map <Integer, ForRent> rentAds = new TreeMap <>();
 
     protected int id;
