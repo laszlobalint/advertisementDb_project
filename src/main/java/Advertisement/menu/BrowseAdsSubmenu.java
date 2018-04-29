@@ -3,7 +3,6 @@ package Advertisement.menu;
 import Advertisement.adtype.ForRent;
 import Advertisement.adtype.ForSale;
 import Advertisement.adtype.SearchRoommate;
-
 import java.util.Map;
 import java.util.Scanner;
 
