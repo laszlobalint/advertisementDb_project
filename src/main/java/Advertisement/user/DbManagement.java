@@ -40,7 +40,7 @@ public class DbManagement {
     }
 
     public boolean loginUser() {
-        System.out.println("\n Login Advertisement.menu ");
+        System.out.println("\n Login menu ");
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your username: ");
         String usernameLogin = input.next();
@@ -70,7 +70,7 @@ public class DbManagement {
     }
 
     public boolean logoutUser() {
-        System.out.println("\nLogout Advertisement.menu ");
+        System.out.println("\nLogout menu ");
         Scanner input = new Scanner(System.in);
         String answer;
         System.out.println("Do you really want to logout? (Y / N): ");
@@ -109,12 +109,12 @@ public class DbManagement {
 
         System.out.println("Enter your password: ");
         while (!input.hasNext("([a-zA-Z0-9])\\w+")) {
-            System.out.println("Password can contain just number, lower and uppercase fonts!");
+            System.out.println("Password must contain only numbers, lowercase and uppercase fonts!");
             input.nextLine();
         }
         String password = input.nextLine();
 
-        System.out.println("Enter your date of birth using numbers (yyyy-MM-dd): ");
+        System.out.println("Enter your date of birth (yyyy-MM-dd): ");
         while (!input.hasNext("\\d{4}.[01]\\d.[0-3]\\d")) {
             System.out.println("Irregular date format. Try again!");
             input.nextLine();
@@ -167,12 +167,12 @@ public class DbManagement {
 
         System.out.println("Enter your password: ");
         while (!input.hasNext("([a-zA-Z0-9])\\w+")) {
-            System.out.println("Password can contain just number, lower and uppercase fonts!");
+            System.out.println("Password can contain only numbers, lowercase and uppercase fonts!");
             input.nextLine();
         }
         String password = input.nextLine();
 
-        System.out.println("Enter your date of birth using numbers (yyyy-MM-dd): ");
+        System.out.println("Enter your date of birth (yyyy-MM-dd): ");
         while (!input.hasNext("\\d{4}.[01]\\d.[0-3]\\d")) {
             System.out.println("Irregular date format. Try again!");
             input.nextLine();
@@ -209,7 +209,7 @@ public class DbManagement {
     public boolean deleteUser() {
         BufferedReader reader = null;
         String line;
-        System.out.println("\nYou can change your profile here: ");
+        System.out.println("\nYou can delete your profile here: ");
         Scanner in = new Scanner(System.in);
         System.out.println("\nDear " + activeUser.getName() + "!");
         System.out.println("Do you really want to delete your profile? (Y / N): ");
@@ -217,14 +217,10 @@ public class DbManagement {
         answer = in.nextLine().trim().toLowerCase();
         switch (answer) {
             case "y":
-                try {
-                    line = reader.readLine();
-                    users.remove(activeUser.getId());
-                    System.out.println("\nYou deleted this profile!");
-                    activeUser.setIsLoggedIn(false);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                users.remove(activeUser.getId());
+                System.out.println("\nYou deleted this profile!");
+                System.out.println(users);
+                activeUser.setIsLoggedIn(false);
                 break;
             case "n":
                 return false;
@@ -275,7 +271,7 @@ public class DbManagement {
         }
         writeSearch.flush();
         writeSearch.close();
-        System.out.println("Search for inmate advertisements were saved to file!");
+        System.out.println("Looking for flatmates advertisements were saved to file!");
 
         return true;
     }

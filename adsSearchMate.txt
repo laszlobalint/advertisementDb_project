@@ -1,1 +1,3 @@
-1;11;I am looking for a nice and friedly roommate.;Csongrad;2;250;false;true;1;true;2018-05-05
+1;11;I am looking for a nice and friendly roommate.;Csongrad;2;250;false;true;1;true;2018-05-05
+2;9;Looking for social, kind roommate who is responsible about rent and bills. Perfect for a young professional.;Vac;3;400;true;true;1;false;2018-10-01
+3;8;Looking for respectful, early thirties non-smoker female.;Gyor;1;300;true;true;0;false;2018-07-10

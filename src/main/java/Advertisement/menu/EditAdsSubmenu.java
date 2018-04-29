@@ -3,15 +3,19 @@ package Advertisement.menu;
 import java.util.Scanner;
 
 import static Advertisement.Main.*;
+import static Advertisement.adtype.ForRent.rentAds;
+import static Advertisement.adtype.ForSale.saleAds;
+import static Advertisement.adtype.SearchRoommate.searchAds;
+import static Advertisement.user.DbManagement.users;
 
 public class EditAdsSubmenu extends MainMenu {
     boolean exit;
 
     public void runMenu() throws Exception {
-        System.out.println("\nWhat kind of advertisement do you want to edit? ");
-        System.out.println("1\t My for rent advertisements ");
-        System.out.println("2\t My for sale advertisements ");
-        System.out.println("3\t My search for inmates advertisements ");
+        System.out.println("\nWhat kind of advertisement would you like to edit? ");
+        System.out.println("1\t My for rent advertisement ");
+        System.out.println("2\t My for sale advertisement ");
+        System.out.println("3\t My looking for inmates advertisements ");
         System.out.println("4\t Back to main menu ");
         System.out.println("0\t Exit program ");
         Scanner kb = new Scanner(System.in);
@@ -32,6 +36,11 @@ public class EditAdsSubmenu extends MainMenu {
             case 0:
                 exit = true;
                 dbManagement.writeToFile();
+                dbConnector.connect();
+                saveDataDb.insertUsers(users);
+                saveDataDb.insertForRent(rentAds);
+                saveDataDb.insertForSale(saleAds);
+                saveDataDb.insertSearchMate(searchAds);
                 System.out.println("Exiting the program.  ");
                 System.out.println("Good bye! ");
                 break;

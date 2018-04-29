@@ -76,7 +76,7 @@ public class ForSale {
         }
         String county = input.nextLine();
 
-        System.out.println("Year of building: ");
+        System.out.println("Year of built: ");
         while (!input.hasNext("\\d+")) {
             System.out.println("Give a regular number!");
             input.nextLine();
@@ -90,7 +90,7 @@ public class ForSale {
         }
         int price = Integer.parseInt(input.next());
 
-        System.out.println("Does the property come with a mortgage? (true or false) ");
+        System.out.println("Is there a mortgage on the property? (true or false) ");
         while (!input.hasNext("true|false")) {
             System.out.println("Choose 'true' or 'false'!");
             input.nextLine();
@@ -144,7 +144,7 @@ public class ForSale {
                 }
                 String county = input.nextLine();
 
-                System.out.println("Year of building: ");
+                System.out.println("Year of built: ");
                 while (!input.hasNext("\\d+")) {
                     System.out.println("Give a regular number!");
                     input.nextLine();
@@ -158,7 +158,7 @@ public class ForSale {
                 }
                 int price = Integer.parseInt(input.next());
 
-                System.out.println("Does the property come with a mortgage? (true or false) ");
+                System.out.println("Is there a mortgage on the property? (true or false) ");
                 while (!input.hasNext("true|false")) {
                     System.out.println("Choose 'true' or 'false'!");
                     input.nextLine();
@@ -295,7 +295,7 @@ public class ForSale {
     @Override
     public String toString() {
         return "\nFlat/House for sale: " + '\n' +
-                "\nText of advertisement: " + text + '\n' +
+                "\nDescription of the advertisement: " + text + '\n' +
                 "County: " + county + '\n' +
                 "Estate was built in: " + wasBuilt + '\n' +
                 "Normative price ($): " + price + '\n' +

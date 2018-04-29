@@ -21,7 +21,7 @@ public class SaveDataDb {
         prepStmnt = conn.prepareStatement(truncate);
         prepStmnt.execute();
         prepStmnt.close();
-        System.out.println("Adding user profiles...");
+        System.out.println("Adding user profiles to MySQL database...");
         String query = "INSERT INTO users (name, username, password, dateOfBirth, phone, email) VALUES (?, ?, ?, ?, ?, ?)";
         for (Users uP : users.values()) {
             prepStmnt = conn.prepareStatement(query);
@@ -41,16 +41,16 @@ public class SaveDataDb {
         prepStmnt = conn.prepareStatement(truncate);
         prepStmnt.execute();
         prepStmnt.close();
-        System.out.println("Adding for rent ads...");
+        System.out.println("Adding for rent advertisements to MySQL database...");
         String query = "INSERT INTO rentAds (userId, text, county, cautionMonths, monthlyRent, currentExpenses, isSmoking, isForStudents, canBeMoved) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         for (ForRent rA : rentAds.values()) {
             prepStmnt = conn.prepareStatement(query);
-            if (rA.isSmoking() == true) {
+            if (rA.isSmoking()) {
                 isSmoking = 1;
             } else {
                 isSmoking = 0;
             }
-            if (rA.isForStudents() == true) {
+            if (rA.isForStudents()) {
                 isForStudents = 1;
             } else {
                 isForStudents = 0;
@@ -74,11 +74,11 @@ public class SaveDataDb {
         prepStmnt = conn.prepareStatement(truncate);
         prepStmnt.execute();
         prepStmnt.close();
-        System.out.println("Adding for sale ads...");
+        System.out.println("Adding for sale advertiesements to MySQL database...");
         String query = "INSERT INTO saleAds (userId, text, county, wasBuilt, price, isMortgaged, canBeMoved) VALUES (?, ?, ?, ?, ?, ?, ?)";
         for (ForSale fS : saleAds.values()) {
             prepStmnt = conn.prepareStatement(query);
-            if (fS.isMortgaged() == true) {
+            if (fS.isMortgaged()) {
                 isMortgaged = 1;
             } else {
                 isMortgaged = 0;
@@ -100,21 +100,21 @@ public class SaveDataDb {
         prepStmnt = conn.prepareStatement(truncate);
         prepStmnt.execute();
         prepStmnt.close();
-        System.out.println("Adding for search ads...");
+        System.out.println("Adding looking for flatmates advertisements to MySQL database...");
         String query = "INSERT INTO searchAds (userId, text, county, cautionMonths, monthlyRent, isSmoking, isForStudents, currentInmate, isMan, canBeMoved) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         for (SearchRoommate sM : searchAds.values()) {
             prepStmnt = conn.prepareStatement(query);
-            if (sM.isSmoking() == true) {
+            if (sM.isSmoking()) {
                 isSmoking = 1;
             } else {
                 isSmoking = 0;
             }
-            if (sM.isForStudents() == true) {
+            if (sM.isForStudents()) {
                 isForStudents = 1;
             } else {
                 isForStudents = 0;
             }
-            if (sM.isMan() == true) {
+            if (sM.isMan()) {
                 isMan = 1;
             } else {
                 isMan = 0;

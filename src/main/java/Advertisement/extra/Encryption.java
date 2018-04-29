@@ -7,7 +7,7 @@ public class Encryption {
     };
 
     public String encrypt(String key) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         int length = key.length();
         char ch;
         int ck = 0;
@@ -17,14 +17,14 @@ public class Encryption {
             }
             ch = key.charAt(i);
             ch += chain[ck];
-            result += ch;
+            result.append(ch);
             ck++;
         }
-        return result;
+        return result.toString();
     }
 
     public String decrypt(String key) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         int length = key.length();
         char ch;
         int ck = 0;
@@ -34,9 +34,9 @@ public class Encryption {
             }
             ch = key.charAt(i);
             ch -= chain[ck];
-            result += ch;
+            result.append(ch);
             ck++;
         }
-        return result;
+        return result.toString();
     }
 }

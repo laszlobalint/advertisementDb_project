@@ -66,7 +66,7 @@ public class SearchRoommate {
 
     public boolean addSearchMate() {
         Scanner input = new Scanner(System.in);
-        System.out.println("\tAdd new advertisement (search for inmate) ");
+        System.out.println("\tAdd new advertisement (looking for flatmate) ");
 
         System.out.println("Advertisement information: ");
         while (!input.hasNext("\\w+")) {
@@ -82,7 +82,7 @@ public class SearchRoommate {
         }
         String county = input.nextLine();
 
-        System.out.println("How many deposits do you require: ");
+        System.out.println("How many monthly deposits are required: ");
         while (!input.hasNext("\\d")) {
             System.out.println("Give a regular number!");
             input.nextLine();
@@ -110,14 +110,14 @@ public class SearchRoommate {
         }
         boolean isStudent = Boolean.parseBoolean(input.next());
 
-        System.out.println("How many housemates are already in the flat/house: ");
+        System.out.println("How many flatmates are already sharing the flat/house: ");
         while (!input.hasNext("\\d+")) {
             System.out.println("Give a regular number!");
             input.nextLine();
         }
         int currentInMate = Integer.parseInt(input.next());
 
-        System.out.println("Are you looking for man? (true or false) ");
+        System.out.println("Are you looking for a male flatmate? (true or false) ");
         while (!input.hasNext("true|false")) {
             System.out.println("Choose 'true' or 'false'!");
             input.nextLine();
@@ -170,7 +170,7 @@ public class SearchRoommate {
                 }
                 String county = input.nextLine();
 
-                System.out.println("How many deposits do you require: ");
+                System.out.println("How many monthly deposits are required: ");
                 while (!input.hasNext("\\d")) {
                     System.out.println("Give a regular number!");
                     input.nextLine();
@@ -198,14 +198,14 @@ public class SearchRoommate {
                 }
                 boolean isStudent = Boolean.parseBoolean(input.next());
 
-                System.out.println("How many housemates are already in the flat/house: ");
+                System.out.println("How many flatmates are already sharing the flat/house: ");
                 while (!input.hasNext("\\d+")) {
                     System.out.println("Give a regular number!");
                     input.nextLine();
                 }
                 int currentInMate = Integer.parseInt(input.next());
 
-                System.out.println("Are you looking for man? (true or false) ");
+                System.out.println("Are you looking for a male flatmate? (true or false) ");
                 while (!input.hasNext("true|false")) {
                     System.out.println("Choose 'true' or 'false'!");
                     input.nextLine();
@@ -236,7 +236,7 @@ public class SearchRoommate {
     public boolean deleteSearchMate() throws IOException {
         BufferedReader reader = null;
         String line;
-        System.out.println("\nYou can delete your search for inmate advertisement here: ");
+        System.out.println("\nYou can delete your looking for flatmate advertisement here: ");
         Scanner in = new Scanner(System.in);
         System.out.println("Give an ID of your advertisement: ");
         while (!in.hasNext("\\d+")) {
@@ -361,14 +361,14 @@ public class SearchRoommate {
 
     @Override
     public String toString() {
-        return "\nSearching for inmate: " + '\n' +
-                "\nText of advertisement: " + text + '\n' +
+        return "\nLooking for flatmate: " + '\n' +
+                "\nDescription of the advertisement: " + text + '\n' +
                 "County: " + county + '\n' +
-                "Months of caution: " + cautionMonths + '\n' +
+                "Months of deposit: " + cautionMonths + '\n' +
                 "Smoking allowed: " + (isSmoking ? " yes" : " no") + '\n' +
                 "Available for students: " + (isForStudents ? " yes" : " no") + '\n' +
-                "Current number of inmates: " + currentInmate + '\n' +
-                "Looking for: " + (isMan ? " man" : " woman") + '\n' +
+                "Current number of flatmates: " + currentInmate + '\n' +
+                "Looking for flatmate: " + (isMan ? " man" : " woman") + '\n' +
                 "Earliest date of moving in: " + canBeMoved + '\n';
     }
 }

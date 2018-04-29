@@ -1,1 +1,3 @@
 1;4;Newly built house with a big garden on the countryside is ready for sale.;Csantaver;2016;20000;false;2019-01-01
+2;7;Excellent location, two bedroom, house for sale in Szeged.;Szeged;1995;30000;true;2018-10-01
+3;2;Leaving India, selling newly built flat on the second floor, plus terrace, area 58 sqm.;Hodmezovasarhely;1990;35000;false;2017-12-30

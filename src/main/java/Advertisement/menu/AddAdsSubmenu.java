@@ -1,10 +1,12 @@
 package Advertisement.menu;
 
-import Advertisement.Main;
-
 import java.util.Scanner;
 
 import static Advertisement.Main.*;
+import static Advertisement.adtype.ForRent.rentAds;
+import static Advertisement.adtype.ForSale.saleAds;
+import static Advertisement.adtype.SearchRoommate.searchAds;
+import static Advertisement.user.DbManagement.users;
 
 public class AddAdsSubmenu extends MainMenu {
     boolean exit;
@@ -13,8 +15,8 @@ public class AddAdsSubmenu extends MainMenu {
         System.out.println("\nWhat kind of advertisement would you like to add? ");
         System.out.println("1\t For rent ");
         System.out.println("2\t For sale ");
-        System.out.println("3\t Searching for inmate ");
-        System.out.println("4\t Back to main Advertisement.menu ");
+        System.out.println("3\t Looking for flatmate ");
+        System.out.println("4\t Back to main menu ");
         System.out.println("0\t Exit program ");
         Scanner kb = new Scanner(System.in);
         int choice = -1;
@@ -33,7 +35,12 @@ public class AddAdsSubmenu extends MainMenu {
         switch (choice) {
             case 0:
                 exit = true;
-                Main.dbManagement.writeToFile();
+                dbManagement.writeToFile();
+                dbConnector.connect();
+                saveDataDb.insertUsers(users);
+                saveDataDb.insertForRent(rentAds);
+                saveDataDb.insertForSale(saleAds);
+                saveDataDb.insertSearchMate(searchAds);
                 System.out.println("Exiting the program. ");
                 System.out.println("Good bye! ");
                 break;

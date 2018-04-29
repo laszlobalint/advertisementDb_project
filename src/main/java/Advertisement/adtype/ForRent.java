@@ -11,7 +11,6 @@ import static Advertisement.user.DbManagement.activeUser;
 import static Advertisement.user.Users.details;
 
 public class ForRent {
-    ForRent forRent = new ForRent();
     public static Map <Integer, ForRent> rentAds = new TreeMap <>();
 
     protected int id;
@@ -45,8 +44,7 @@ public class ForRent {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader("adsForRent.txt"));
-            String line;
-            line = null;
+            String line = null;
             while ((line = reader.readLine()) != null) {
                 details = line.split(";");
                 ForRent newForRent = new ForRent(Integer.parseInt(details[0]), Integer.parseInt(details[1]), details[2], details[3], Integer.parseInt(details[4]), Integer.parseInt(details[5]), Integer.parseInt(details[6]), Boolean.parseBoolean(details[7]), Boolean.parseBoolean(details[8]), details[9]);
@@ -82,7 +80,7 @@ public class ForRent {
         }
         String county = input.nextLine();
 
-        System.out.println("How many deposits do you require: ");
+        System.out.println("How many monthly deposits are required: ");
         while (!input.hasNext("\\d")) {
             System.out.println("Give a regular number!");
             input.nextLine();
@@ -164,7 +162,7 @@ public class ForRent {
                 }
                 String county = input.nextLine();
 
-                System.out.println("How many deposits do you require: ");
+                System.out.println("How many monthy deposits are required: ");
                 while (!input.hasNext("\\d")) {
                     System.out.println("Give a regular number!");
                     input.nextLine();
@@ -345,9 +343,9 @@ public class ForRent {
     @Override
     public String toString() {
         return "\nFlat/House for rent: " + '\n' +
-                "\nText of advertisement: " + text + '\n' +
+                "\nDescription of the advertisement: " + text + '\n' +
                 "County: " + county + '\n' +
-                "Months of caution: " + cautionMonths + '\n' +
+                "Months of deposit: " + cautionMonths + '\n' +
                 "Monthly rent ($/M): " + monthlyRent + '\n' +
                 "Estimated current expenses ($/M): " + currentExpenses + '\n' +
                 "Smoking allowed: " + (isSmoking ? " yes" : " no") + '\n' +

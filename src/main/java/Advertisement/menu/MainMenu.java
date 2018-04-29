@@ -35,11 +35,11 @@ public class MainMenu {
         } else {
             System.out.println("\nPlease, make your choice: ");
             System.out.println("1\t Registration ");
-            System.out.println("2\t Login Advertisement.user ");
+            System.out.println("2\t Login user ");
             System.out.println("3\t Add new advertisement ");
             System.out.println("4\t Browse advertisements ");
             System.out.println("5\t Edit an advertisement ");
-            System.out.println("6\t Delete an advertisements ");
+            System.out.println("6\t Delete an advertisement ");
             System.out.println("7\t Logout user ");
             System.out.println("8\t Show user profile ");
             System.out.println("9\t Change user profile ");
@@ -51,8 +51,8 @@ public class MainMenu {
     public void printHead() {
         System.out.println("+---------------------------------------+");
         System.out.println("+            Welcome to my              +");
-        System.out.println("+            advertisement              +");
-        System.out.println("+            info database              +");
+        System.out.println("+             real estate               +");
+        System.out.println("+            agents databe!             +");
         System.out.println("+---------------------------------------+");
     }
 
