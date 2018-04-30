@@ -37,4 +37,9 @@ public class MainMenuTest {
         Mockito.doThrow(new SQLException()).when(dataServiceMock).insertUsers(users);
         mainMenu.performAction(0);
     }
+
+    @Test
+    public void testMapIsEmpty() {
+        NavigableMap<Integer, Users> users = new TreeMap<>();
+    }
 }
