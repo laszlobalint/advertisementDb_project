@@ -1,7 +1,7 @@
 package Advertisement.menu;
 
+import Advertisement.dbaccess.DataService;
 import Advertisement.dbaccess.DbConnector;
-import Advertisement.dbaccess.SaveDataDb;
 
 import java.util.Scanner;
 
@@ -13,9 +13,13 @@ import static Advertisement.user.DbManagement.activeUser;
 import static Advertisement.user.DbManagement.users;
 
 public class MainMenu {
+    private DataService dataService;
     DbConnector dbConnector = new DbConnector("root", "toor");
-    SaveDataDb saveDataDb = new SaveDataDb();
     boolean exit;
+
+    public MainMenu(DataService dataService) {
+        this.dataService = dataService;
+    }
 
     public void runMenu() throws Exception {
         printHead();
@@ -89,10 +93,10 @@ public class MainMenu {
                     exit = true;
                     dbManagement.writeToFile();
                     dbConnector.connect();
-                    saveDataDb.insertUsers(users);
-                    saveDataDb.insertForRent(rentAds);
-                    saveDataDb.insertForSale(saleAds);
-                    saveDataDb.insertSearchMate(searchAds);
+                    dataService.insertUsers(users);
+                    dataService.insertForRent(rentAds);
+                    dataService.insertForSale(saleAds);
+                    dataService.insertSearchMate(searchAds);
                     dbConnector.closeConnection();
                     System.out.println("Exiting the program. ");
                     System.out.println("Good bye! ");
@@ -112,10 +116,10 @@ public class MainMenu {
                     exit = true;
                     dbManagement.writeToFile();
                     dbConnector.connect();
-                    saveDataDb.insertUsers(users);
-                    saveDataDb.insertForRent(rentAds);
-                    saveDataDb.insertForSale(saleAds);
-                    saveDataDb.insertSearchMate(searchAds);
+                    dataService.insertUsers(users);
+                    dataService.insertForRent(rentAds);
+                    dataService.insertForSale(saleAds);
+                    dataService.insertSearchMate(searchAds);
                     dbConnector.closeConnection();
                     System.out.println("Exiting the program. ");
                     System.out.println("Good bye! ");

@@ -10,13 +10,13 @@ import java.util.NavigableMap;
 import static Advertisement.dbaccess.DbConnector.conn;
 import static Advertisement.dbaccess.DbConnector.prepStmnt;
 
-public class SaveDataDb {
+public class SaveDataDb implements DataService {
     Integer isForStudents;
     Integer isSmoking;
     Integer isMan;
     Integer isMortgaged;
 
-    public void insertUsers(NavigableMap <Integer, Users> users) throws Exception {
+    public void insertUsers(NavigableMap <Integer, Users> users) throws SQLException {
         String truncate = "TRUNCATE TABLE users";
         prepStmnt = conn.prepareStatement(truncate);
         prepStmnt.execute();

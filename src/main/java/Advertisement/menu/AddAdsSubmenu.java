@@ -1,5 +1,7 @@
 package Advertisement.menu;
 
+import Advertisement.dbaccess.DataService;
+
 import java.util.Scanner;
 
 import static Advertisement.Main.*;
@@ -10,6 +12,10 @@ import static Advertisement.user.DbManagement.users;
 
 public class AddAdsSubmenu extends MainMenu {
     boolean exit;
+
+    public AddAdsSubmenu(DataService dataService) {
+        super(dataService);
+    }
 
     public void runMenu() throws Exception {
         System.out.println("\nWhat kind of advertisement would you like to add? ");

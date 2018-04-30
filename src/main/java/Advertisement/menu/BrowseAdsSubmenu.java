@@ -3,10 +3,13 @@ package Advertisement.menu;
 import Advertisement.adtype.ForRent;
 import Advertisement.adtype.ForSale;
 import Advertisement.adtype.SearchRoommate;
+import Advertisement.dbaccess.DataService;
+
 import java.util.Map;
 import java.util.Scanner;
 
 import static Advertisement.Main.dbManagement;
+import static Advertisement.Main.saveDataDb;
 import static Advertisement.adtype.ForRent.rentAds;
 import static Advertisement.adtype.ForSale.saleAds;
 import static Advertisement.adtype.SearchRoommate.searchAds;
@@ -14,6 +17,10 @@ import static Advertisement.user.DbManagement.users;
 
 public class BrowseAdsSubmenu extends MainMenu {
     boolean exit;
+
+    public BrowseAdsSubmenu(DataService dataService) {
+        super(dataService);
+    }
 
     public void runMenu() throws Exception {
         System.out.println("\nHow do you want to search? ");
