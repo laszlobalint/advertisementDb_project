@@ -31,15 +31,10 @@ public class MainMenuTest {
         mainMenu = new MainMenu(dataServiceMock);
     }
 
-    @Test(expected = Exception.class)
+    @Test(expected = SQLException.class)
     public void testPerformAction() throws Exception {
-        NavigableMap<Integer, Users> users = new TreeMap<>();
+        NavigableMap <Integer, Users> users = new TreeMap <>();
         Mockito.doThrow(new SQLException()).when(dataServiceMock).insertUsers(users);
         mainMenu.performAction(0);
-    }
-
-    @Test
-    public void testMapIsEmpty() {
-        NavigableMap<Integer, Users> users = new TreeMap<>();
     }
 }

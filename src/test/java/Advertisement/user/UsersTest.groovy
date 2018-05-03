@@ -7,6 +7,4 @@ class UsersTest extends GroovyTestCase {
         String expectedPassword = "newpasswordrequired001";
         assertEquals(expectedPassword, user.getPassword());
     }
-
-
 }
