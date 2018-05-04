@@ -8,8 +8,8 @@ import java.sql.Statement;
 public class DbConnector {
     final String DRIVER = "com.mysql.cj.jdbc.Driver";
     final String DB_PATH = "jdbc:mysql://localhost/advertisements?verifyServerCertificate=false&useSSL=true";
-    String username = null;
-    String password = null;
+    String username;
+    String password;
     static Connection conn = null;
     static Statement stat = null;
     static PreparedStatement prepStmnt = null;
