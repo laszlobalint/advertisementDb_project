@@ -1,33 +1,11 @@
 ![advertisement_java](https://user-images.githubusercontent.com/36161578/39528054-5aecb034-4e23-11e8-9d79-5d00de943707.jpg)
 
-A program alapvetően egy hirdetéskezelő programot valósít meg.
-A programnak használathoz regisztráció szükséges. Nem regisztrált felhasználóknak csupán a regisztráció vagy bejelentkezés menüpont érhető el. Hirdetéseket feladni, vagy olvasni csak regisztrált felhasználók tudnak. A regisztráció során szükséges megadni, nevet, felhasználónevet, jelszót (esetleg plusz pontért, titkosítva tárolni azt) születési dátumot, telefonszámot és e-mail címet. Az adatbázis vagy fileban kiírva tárolódik, vagy esetleg plusz pontért kiszerialízálva van tárolva. A felhasználó a későbbiekben módosíthatja adatait.
-Regisztrált felhasználók tudnak hirdetést feladni, vagy azok közt böngészni. A hirdetések közt szerepelnek eladó lakások, kiadó lakások, és lakótársat kereső hirdetések. A különböző hirdetéstípusokhoz más-más hirdetések tartoznak.
-Eladó lakásnál meg kell adni a hirdetés szövegén felül, hogy:
-  hol, melyik községben van az ingatlan,
-  mikor épült az épület,
-  az irányárat,
-  van-e az ingatlanon jelzálog
-  mikor költözhető.
-Kiadó lakás esetében meg kell adni a hirdetés szövegén felül:
-  hol, melyik községben van az ingatlan,
-  hány havi kauciót kérnek,
-  a havi lakbért,
-  a várható rezsi mértékét,
-  lehet-e dohányozni a bérleményben,
-  diákoknak is elérhető-e
-  mikor költözhető.
-Lakótárs esetében, a hirdetés szövegén felül, meg kell adni, hogy:
-  hol, melyik községben van az ingatlan,
-  hány havi kauciót kérnek,
-  a havi lakbért,
-  lehet-e dohányozni a bérleményben,
-  diákoknak is elérhető-e,
-  hányan laknak jelenleg a bérleményben,
-  fiú vagy lány lakótársat keresnek
-  mikor költözhető.
-Új hirdetés feladásánál, a program figyeli, hogy az egyes mezőkbe csak helyes értékek kerülhetnek, és kezeli az esetleges problémákat.
-Minden hirdetés és felhasználó rendelkezik egy azonosítóval, és lehetőség van az hirdetések és felhasználók közt is ezen azonosító segítségével keresni. Ugyanakkor a meglévő hirdetések közt bárki böngészhet. A hirdetés feladójának lehetősége van a saját hirdetéseit a későbbiekben módosítani, vagy törölni.
-Végül, lehetősége van a felhasználónak törölnie magát a rendszerből.
-Feladat:
-A feladat a fenti hirdetéskezelő program objektumorientált megvalósítása!
+The program implements an advertisement management program. It requires registration. Unregistered users can only access the registration or login menu. Placing or reading ads is possible only after registration. When registering you need to enter your name, username, password, date of birth, phone number and email address. The datas are stored in MySQL database. The users can change their data later. Registered users can either post or browse an ad. Advertisements include three categories, such as flats for sale, flats for rent, or looking for a flat mate.  Different ad types apply different advertisements.
+
+In case of a flat for sale, in addition to the text of the advertisement, you must specify the following: when is the flat fit for occupation, whether there is a mortgage on the property, the target price, when was the block of flats built, where is the property located.
+
+In case of a flat for rent the following details should be given in addition to the text of the advertisement:  where is the property located, how many monthly installments are requested, the monthly rent, the expected amount of overhead, is the flat smoking, or non-smoking, is it available for students, when is the flat fit for moving.
+
+In case of a looking for a flat mate ad you must specify the following: where is the property located, how many monthly installments are requested,   the monthly rent, the expected amount of overhead, is the flat smoking, or non-smoking, is it available for students, how many people are currently living in the property, whether they are looking for a male or female flat mate, when is the flat fit for moving.
+
+When placing a new ad, the program monitors, so that only the correct values can be entered in each field and handles any problems. All ads and users have an ID, and it is also possible to search among ads and users through the help of these IDs. However, anyone can browse the existing ads. The placers of the ads can modify or delete  their own ads. It is also possible for the users to delete themselves from the system. 
