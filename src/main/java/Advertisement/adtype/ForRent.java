@@ -13,16 +13,16 @@ import static Advertisement.user.Users.details;
 public class ForRent {
     public static Map <Integer, ForRent> rentAds = new TreeMap <>();
 
-    protected int id;
-    protected int userId;
-    protected String text;
-    protected String county;
-    protected int cautionMonths;
-    protected int monthlyRent;
-    protected int currentExpenses;
-    protected boolean isSmoking;
-    protected boolean isForStudents;
-    protected String canBeMoved;
+    private int id;
+    private int userId;
+    private String text;
+    private String county;
+    private int cautionMonths;
+    private int monthlyRent;
+    private int currentExpenses;
+    private boolean isSmoking;
+    private boolean isForStudents;
+    private String canBeMoved;
 
     public ForRent(int id, int userId, String text, String county, int cautionMonths, int monthlyRent, int currentExpenses, boolean isSmoking, boolean isForStudents, String canBeMoved) {
         this.id = id;

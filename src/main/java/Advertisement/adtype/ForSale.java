@@ -11,14 +11,14 @@ import static Advertisement.user.DbManagement.activeUser;
 import static Advertisement.user.Users.details;
 
 public class ForSale {
-    protected int id;
-    protected int userId;
-    protected String text;
-    protected String county;
-    protected int wasBuilt;
-    protected int price;
-    protected boolean isMortgaged;
-    protected String canBeMoved;
+    private int id;
+    private int userId;
+    private String text;
+    private String county;
+    private int wasBuilt;
+    private int price;
+    private boolean isMortgaged;
+    private String canBeMoved;
 
     public static Map <Integer, ForSale> saleAds = new TreeMap <>();
 

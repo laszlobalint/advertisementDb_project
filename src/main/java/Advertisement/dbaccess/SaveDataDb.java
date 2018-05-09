@@ -4,19 +4,23 @@ import Advertisement.adtype.ForRent;
 import Advertisement.adtype.ForSale;
 import Advertisement.adtype.SearchRoommate;
 import Advertisement.user.Users;
+
 import java.sql.SQLException;
-import java.util.Map;
-import java.util.NavigableMap;
+
+import static Advertisement.adtype.ForRent.rentAds;
+import static Advertisement.adtype.ForSale.saleAds;
+import static Advertisement.adtype.SearchRoommate.searchAds;
 import static Advertisement.dbaccess.DbConnector.conn;
 import static Advertisement.dbaccess.DbConnector.prepStmnt;
+import static Advertisement.user.DbManagement.users;
 
 public class SaveDataDb implements DataService {
-    Integer isForStudents;
-    Integer isSmoking;
-    Integer isMan;
-    Integer isMortgaged;
+    private Integer isForStudents;
+    private Integer isSmoking;
+    private Integer isMan;
+    private Integer isMortgaged;
 
-    public void insertUsers(NavigableMap <Integer, Users> users) throws SQLException {
+    public void insertUsers() throws SQLException {
         String truncate = "TRUNCATE TABLE users";
         prepStmnt = conn.prepareStatement(truncate);
         prepStmnt.execute();
@@ -36,7 +40,7 @@ public class SaveDataDb implements DataService {
         }
     }
 
-    public void insertForRent(Map <Integer, ForRent> rentAds) throws SQLException {
+    public void insertForRent() throws SQLException {
         String truncate = "TRUNCATE TABLE rentAds";
         prepStmnt = conn.prepareStatement(truncate);
         prepStmnt.execute();
@@ -69,7 +73,7 @@ public class SaveDataDb implements DataService {
         }
     }
 
-    public void insertForSale(Map <Integer, ForSale> saleAds) throws SQLException {
+    public void insertForSale() throws SQLException {
         String truncate = "TRUNCATE TABLE saleAds";
         prepStmnt = conn.prepareStatement(truncate);
         prepStmnt.execute();
@@ -95,7 +99,7 @@ public class SaveDataDb implements DataService {
         }
     }
 
-    public void insertSearchMate(Map <Integer, SearchRoommate> searchAds) throws SQLException {
+    public void insertSearchMate() throws SQLException {
         String truncate = "TRUNCATE TABLE searchAds";
         prepStmnt = conn.prepareStatement(truncate);
         prepStmnt.execute();

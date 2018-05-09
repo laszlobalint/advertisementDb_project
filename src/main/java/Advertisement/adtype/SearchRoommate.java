@@ -11,17 +11,17 @@ import static Advertisement.user.DbManagement.activeUser;
 import static Advertisement.user.Users.details;
 
 public class SearchRoommate {
-    protected int id;
-    protected int userId;
-    protected String text;
-    protected String county;
-    protected int cautionMonths;
-    protected int monthlyRent;
-    protected boolean isSmoking;
-    protected boolean isForStudents;
-    protected int currentInmate;
-    protected boolean isMan;
-    protected String canBeMoved;
+    private int id;
+    private int userId;
+    private String text;
+    private String county;
+    private int cautionMonths;
+    private int monthlyRent;
+    private boolean isSmoking;
+    private boolean isForStudents;
+    private int currentInmate;
+    private boolean isMan;
+    private String canBeMoved;
 
     public static Map <Integer, SearchRoommate> searchAds = new TreeMap <>();
 

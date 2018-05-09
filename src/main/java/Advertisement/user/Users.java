@@ -4,16 +4,16 @@ import Advertisement.extra.Encryption;
 
 public class Users {
 
-    Encryption encryption = new Encryption();
+    private Encryption encryption = new Encryption();
 
-    protected static boolean isLoggedIn = false;
-    protected int id;
-    protected String name;
-    protected String username;
-    protected String password;
-    protected String dateOfBirth;
-    protected String phone;
-    protected String email;
+    private static boolean isLoggedIn = false;
+    private int id;
+    private String name;
+    private String username;
+    private String password;
+    private String dateOfBirth;
+    private String phone;
+    private String email;
     public static String[] details;
 
     public Users(int id, String name, String username, String password, String dateOfBirth, String phone, String email) {

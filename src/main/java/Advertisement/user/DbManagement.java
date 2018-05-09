@@ -3,6 +3,7 @@ package Advertisement.user;
 import Advertisement.adtype.ForRent;
 import Advertisement.adtype.ForSale;
 import Advertisement.adtype.SearchRoommate;
+import Advertisement.dbaccess.DbConnector;
 
 import java.io.*;
 import java.util.Map;
@@ -10,13 +11,16 @@ import java.util.NavigableMap;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+import static Advertisement.Main.dbManagement;
+import static Advertisement.Main.saveDataDb;
 import static Advertisement.user.Users.details;
 
 public class DbManagement {
     public static NavigableMap <Integer, Users> users = new TreeMap <>();
     public static Users activeUser = new Users();
+    public static DbConnector dbConnector = new DbConnector("root", "toor");
 
-    public boolean loadUsers() {
+    public Map<Integer, Users> loadUsers() {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader("./adsUsers.txt"));
@@ -36,7 +40,7 @@ public class DbManagement {
                 e.printStackTrace();
             }
         }
-        return true;
+        return users;
     }
 
     public boolean loginUser() {
@@ -231,7 +235,7 @@ public class DbManagement {
         return true;
     }
 
-    public boolean writeToFile() throws IOException {
+    private boolean writeToFile() throws IOException {
         BufferedWriter bw = null;
         bw = new BufferedWriter(new FileWriter("./adsUsers.txt"));
         String content;
@@ -272,8 +276,18 @@ public class DbManagement {
         writeSearch.flush();
         writeSearch.close();
         System.out.println("Looking for flatmates advertisements were saved to file!");
-
         return true;
+    }
+
+    public void exitProcedure() throws Exception {
+        dbManagement.writeToFile();
+        saveDataDb.insertUsers();
+        saveDataDb.insertForRent();
+        saveDataDb.insertForSale();
+        saveDataDb.insertSearchMate();
+        dbConnector.closeConnection();
+        System.out.println("Exiting the program. ");
+        System.out.println("Good bye! ");
     }
 
     public static Map <Integer, Users> getUsers() {

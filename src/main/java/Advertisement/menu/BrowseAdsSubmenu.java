@@ -9,14 +9,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 import static Advertisement.Main.dbManagement;
-import static Advertisement.Main.saveDataDb;
 import static Advertisement.adtype.ForRent.rentAds;
 import static Advertisement.adtype.ForSale.saleAds;
 import static Advertisement.adtype.SearchRoommate.searchAds;
 import static Advertisement.user.DbManagement.users;
 
 public class BrowseAdsSubmenu extends MainMenu {
-    boolean exit;
+    private boolean exit;
 
     public BrowseAdsSubmenu(DataService dataService) {
         super(dataService);
@@ -48,14 +47,7 @@ public class BrowseAdsSubmenu extends MainMenu {
         switch (choice) {
             case 0:
                 exit = true;
-                dbManagement.writeToFile();
-                dbConnector.connect();
-                saveDataDb.insertUsers(users);
-                saveDataDb.insertForRent(rentAds);
-                saveDataDb.insertForSale(saleAds);
-                saveDataDb.insertSearchMate(searchAds);
-                System.out.println("Exiting the program. ");
-                System.out.println("Good bye! ");
+                dbManagement.exitProcedure();
                 break;
             case 1:
                 System.out.println("\nAll for rent advertisements in the database: \n");

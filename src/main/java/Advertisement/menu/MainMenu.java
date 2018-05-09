@@ -1,21 +1,17 @@
 package Advertisement.menu;
 
 import Advertisement.dbaccess.DataService;
-import Advertisement.dbaccess.DbConnector;
+import com.diogonunes.jcdp.color.ColoredPrinter;
+import com.diogonunes.jcdp.color.api.Ansi;
 
 import java.util.Scanner;
 
 import static Advertisement.Main.*;
-import static Advertisement.adtype.ForRent.rentAds;
-import static Advertisement.adtype.ForSale.saleAds;
-import static Advertisement.adtype.SearchRoommate.searchAds;
 import static Advertisement.user.DbManagement.activeUser;
-import static Advertisement.user.DbManagement.users;
 
 public class MainMenu {
-    private DataService dataService;
-    DbConnector dbConnector = new DbConnector("root", "toor");
-    boolean exit;
+    private final DataService dataService;
+    private boolean exit;
 
     public MainMenu(DataService dataService) {
         this.dataService = dataService;
@@ -31,6 +27,10 @@ public class MainMenu {
     }
 
     public void printMenu() {
+        ColoredPrinter cp = new ColoredPrinter.Builder(1, false)
+                .foreground(Ansi.FColor.GREEN).background(Ansi.BColor.BLACK)
+                .build();
+        cp.println("");
         if (!activeUser.isIsLoggedIn()) {
             System.out.println("\nPlease, make your choice: ");
             System.out.println("1\t Registration ");
@@ -53,11 +53,16 @@ public class MainMenu {
     }
 
     public void printHead() {
+        ColoredPrinter cp = new ColoredPrinter.Builder(1, false)
+                .foreground(Ansi.FColor.RED).background(Ansi.BColor.BLACK)
+                .build();
+        cp.println("");
         System.out.println("+---------------------------------------+");
         System.out.println("+            Welcome to my              +");
         System.out.println("+             real estate               +");
         System.out.println("+            agents databe!             +");
         System.out.println("+---------------------------------------+");
+        cp.clear();
     }
 
     public int getInput() {
@@ -91,15 +96,7 @@ public class MainMenu {
             switch (choice) {
                 case 0:
                     exit = true;
-                    dbManagement.writeToFile();
-                    dbConnector.connect();
-                    dataService.insertUsers(users);
-                    dataService.insertForRent(rentAds);
-                    dataService.insertForSale(saleAds);
-                    dataService.insertSearchMate(searchAds);
-                    dbConnector.closeConnection();
-                    System.out.println("Exiting the program. ");
-                    System.out.println("Good bye! ");
+                    dbManagement.exitProcedure();
                     break;
                 case 1:
                     dbManagement.addUser();
@@ -114,15 +111,7 @@ public class MainMenu {
             switch (choice) {
                 case 0:
                     exit = true;
-                    dbManagement.writeToFile();
-                    dbConnector.connect();
-                    dataService.insertUsers(users);
-                    dataService.insertForRent(rentAds);
-                    dataService.insertForSale(saleAds);
-                    dataService.insertSearchMate(searchAds);
-                    dbConnector.closeConnection();
-                    System.out.println("Exiting the program. ");
-                    System.out.println("Good bye! ");
+                    dbManagement.exitProcedure();
                     break;
                 case 1:
                     dbManagement.addUser();
@@ -146,7 +135,7 @@ public class MainMenu {
                     dbManagement.logoutUser();
                     break;
                 case 8:
-                    System.out.println(dbManagement.activeUser.toString());
+                    System.out.println(activeUser.toString());
                     break;
                 case 9:
                     dbManagement.editUser();

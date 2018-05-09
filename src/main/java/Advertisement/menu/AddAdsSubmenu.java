@@ -5,13 +5,9 @@ import Advertisement.dbaccess.DataService;
 import java.util.Scanner;
 
 import static Advertisement.Main.*;
-import static Advertisement.adtype.ForRent.rentAds;
-import static Advertisement.adtype.ForSale.saleAds;
-import static Advertisement.adtype.SearchRoommate.searchAds;
-import static Advertisement.user.DbManagement.users;
 
 public class AddAdsSubmenu extends MainMenu {
-    boolean exit;
+    private boolean exit;
 
     public AddAdsSubmenu(DataService dataService) {
         super(dataService);
@@ -41,14 +37,7 @@ public class AddAdsSubmenu extends MainMenu {
         switch (choice) {
             case 0:
                 exit = true;
-                dbManagement.writeToFile();
-                dbConnector.connect();
-                saveDataDb.insertUsers(users);
-                saveDataDb.insertForRent(rentAds);
-                saveDataDb.insertForSale(saleAds);
-                saveDataDb.insertSearchMate(searchAds);
-                System.out.println("Exiting the program. ");
-                System.out.println("Good bye! ");
+                dbManagement.exitProcedure();
                 break;
             case 1:
                 forRent.addForRent();
