@@ -1,4 +1,4 @@
-![advertisement_java](https://user-images.githubusercontent.com/36161578/39528054-5aecb034-4e23-11e8-9d79-5d00de943707.jpg)
+![screenshot](https://user-images.githubusercontent.com/36161578/39815404-2ac978c2-5398-11e8-9c75-1c078e13d707.jpg)
 
 The program implements an advertisement management program. It requires registration. Unregistered users can only access the registration or login menu. Placing or reading ads is possible only after registration. When registering you need to enter your name, username, password, date of birth, phone number and email address. The datas are stored in MySQL database. The users can change their data later. Registered users can either post or browse an ad. Advertisements include three categories, such as flats for sale, flats for rent, or looking for a flat mate.  Different ad types apply different advertisements.
 
