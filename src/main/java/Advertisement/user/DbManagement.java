@@ -281,7 +281,7 @@ public class DbManagement {
 
     public void exitProcedure() throws Exception {
         dbManagement.writeToFile();
-        saveDataDb.insertUsers();
+        saveDataDb.insertUsers(users);
         saveDataDb.insertForRent();
         saveDataDb.insertForSale();
         saveDataDb.insertSearchMate();

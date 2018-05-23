@@ -1,3 +1,4 @@
+/*
 package Advertisement.menu
 
 class BrowseAdsSubmenuTest extends GroovyTestCase {
@@ -8,3 +9,4 @@ class BrowseAdsSubmenuTest extends GroovyTestCase {
         assertNotNull(browseAdsSubmenu.performAction(number), true);
     }
 }
+*/

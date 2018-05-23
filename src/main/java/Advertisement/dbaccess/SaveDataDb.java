@@ -3,16 +3,17 @@ package Advertisement.dbaccess;
 import Advertisement.adtype.ForRent;
 import Advertisement.adtype.ForSale;
 import Advertisement.adtype.SearchRoommate;
+import Advertisement.user.DbManagement;
 import Advertisement.user.Users;
 
 import java.sql.SQLException;
+import java.util.NavigableMap;
 
 import static Advertisement.adtype.ForRent.rentAds;
 import static Advertisement.adtype.ForSale.saleAds;
 import static Advertisement.adtype.SearchRoommate.searchAds;
 import static Advertisement.dbaccess.DbConnector.conn;
 import static Advertisement.dbaccess.DbConnector.prepStmnt;
-import static Advertisement.user.DbManagement.users;
 
 public class SaveDataDb implements DataService {
     private Integer isForStudents;
@@ -20,14 +21,14 @@ public class SaveDataDb implements DataService {
     private Integer isMan;
     private Integer isMortgaged;
 
-    public void insertUsers() throws SQLException {
+    public void insertUsers(NavigableMap<Integer, Users> users) throws SQLException {
         String truncate = "TRUNCATE TABLE users";
         prepStmnt = conn.prepareStatement(truncate);
         prepStmnt.execute();
         prepStmnt.close();
         System.out.println("Adding user profiles to MySQL database...");
         String query = "INSERT INTO users (name, username, password, dateOfBirth, phone, email) VALUES (?, ?, ?, ?, ?, ?)";
-        for (Users uP : users.values()) {
+        for (Users uP : DbManagement.users.values()) {
             prepStmnt = conn.prepareStatement(query);
             prepStmnt.setString(1, uP.getName());
             prepStmnt.setString(2, uP.getUsername());

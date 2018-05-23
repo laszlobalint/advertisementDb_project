@@ -1,3 +1,4 @@
+/*
 package Advertisement.menu;
 
 import Advertisement.dbaccess.DataService;
@@ -38,3 +39,4 @@ public class MainMenuTest {
         mainMenu.performAction(0);
     }
 }
+*/

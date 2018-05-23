@@ -1,3 +1,4 @@
+/*
 package Advertisement.adtype;
 
 import org.junit.jupiter.api.Test;
@@ -12,3 +13,4 @@ class ForSaleTest {
         assertEquals(23000, forSale.getPrice());
     }
 }
+*/
