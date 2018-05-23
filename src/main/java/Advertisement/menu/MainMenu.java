@@ -60,7 +60,7 @@ public class MainMenu {
         System.out.println("+---------------------------------------+");
         System.out.println("+            Welcome to my              +");
         System.out.println("+             real estate               +");
-        System.out.println("+            agents databe!             +");
+        System.out.println("+            agents databes!             +");
         System.out.println("+---------------------------------------+");
         cp.clear();
     }
